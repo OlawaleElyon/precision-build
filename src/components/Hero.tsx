@@ -12,8 +12,8 @@ const Hero = () => {
           alt="Premium Mercedes vehicle"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/60 to-background/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40"></div>
       </div>
 
       {/* Content */}
@@ -31,9 +31,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black text-primary leading-tight mb-6"
+            className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
           >
-            WITH STYLE
+            <span className="text-primary">WITH </span>
+            <span className="text-accent">STYLE</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -52,13 +53,13 @@ const Hero = () => {
           >
             <a
               href="#booking"
-              className="btn-gradient px-8 py-4 rounded-md text-base font-semibold text-primary-foreground hover:opacity-90 transition-all duration-300 hover:scale-105"
+              className="btn-gradient px-8 py-4 rounded-lg text-base font-semibold text-primary-foreground transition-all duration-300"
             >
               Book Appointment
             </a>
             <a
               href="#projects"
-              className="border border-primary text-foreground px-8 py-4 rounded-md text-base font-semibold hover:bg-primary/10 transition-all duration-300 hover:scale-105"
+              className="border-2 border-primary text-foreground px-8 py-4 rounded-lg text-base font-semibold hover:bg-primary/10 hover:border-primary transition-all duration-300"
             >
               View Projects
             </a>
@@ -77,7 +78,7 @@ const Hero = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown className="w-8 h-8 text-primary" />
+          <ChevronDown className="w-8 h-8 text-accent" />
         </motion.div>
       </motion.div>
     </section>
