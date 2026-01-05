@@ -23,9 +23,9 @@ const projectCategories = [
   {
     name: "Window Tint",
     projects: [
-      { image: projectTint1, alt: "Ford Raptor with window tint" },
-      { image: projectTint2, alt: "White Honda with tinted windows" },
-      { image: projectTint3, alt: "Nissan with blue reflective tint" },
+      { image: projectTint1, alt: "Ford Bronco with window tint" },
+      { image: projectTint2, alt: "Garage interior with vehicles" },
+      { image: projectTint3, alt: "Mercedes with tinted windows" },
     ],
   },
   {
@@ -63,13 +63,10 @@ const Projects = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-12"
         >
-          <span className="text-accent text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
-            PORTFOLIO
-          </span>
-          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
             Our Projects
           </h2>
-          <p className="text-foreground/70 text-lg max-w-2xl">
+          <p className="text-foreground/70 text-lg max-w-2xl italic">
             A showcase of transformations that push the boundaries of automotive design.
           </p>
         </motion.div>
@@ -114,7 +111,7 @@ const Projects = () => {
                 onClick={() => setCurrentSlide(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentSlide
-                    ? "w-8 bg-accent"
+                    ? "w-8 bg-primary"
                     : "w-2 bg-foreground/30 hover:bg-foreground/50"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}

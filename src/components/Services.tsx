@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Smile, Shield, Sparkles } from "lucide-react";
+import { Droplets, Shield, Sparkles } from "lucide-react";
 import serviceWrap from "@/assets/service-wrap.jpg";
 import serviceTint from "@/assets/service-tint.jpg";
 import serviceDecals from "@/assets/service-decals.jpg";
@@ -12,7 +12,7 @@ const services = [
     description: "Full color change and custom design options for every style.",
     duration: "1 hr",
     price: "$500",
-    icon: Smile,
+    icon: Droplets,
     image: serviceWrap,
   },
   {
@@ -38,7 +38,7 @@ const Services = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="py-24 bg-secondary/30" ref={ref}>
+    <section id="services" className="py-24 bg-background" ref={ref}>
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -47,13 +47,10 @@ const Services = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <span className="text-accent text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
-            WHAT WE OFFER
-          </span>
-          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
-            Our Services
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Services
           </h2>
-          <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
+          <p className="text-foreground/70 text-lg max-w-2xl mx-auto italic">
             We offer precision services that elevate your vehicle's aesthetic and performance.
           </p>
         </motion.div>
@@ -101,7 +98,7 @@ const Services = () => {
                     </div>
                     <div className="text-right">
                       <span className="text-foreground/50 text-xs block">Starting at</span>
-                      <span className="text-accent font-bold text-xl">{service.price}</span>
+                      <span className="text-primary font-bold text-xl">{service.price}</span>
                     </div>
                   </div>
                 </div>
