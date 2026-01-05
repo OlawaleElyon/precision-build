@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,20 +21,11 @@ const Header = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border"
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
-            <div className="relative">
-              <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shadow-lg">
-                <span className="text-primary-foreground font-black text-lg">O</span>
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-2 bg-accent rounded-full transform rotate-12"></div>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-foreground font-bold text-xl tracking-wider">OPTIMUS</span>
-              <span className="text-primary text-[10px] tracking-widest -mt-1">DESIGN & CUSTOMS</span>
-            </div>
+          <a href="#home" className="flex items-center">
+            <img src={logo} alt="Optimus Design & Customs" className="h-14 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
@@ -42,14 +34,14 @@ const Header = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-foreground/80 hover:text-foreground text-sm font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+                className="text-foreground/80 hover:text-foreground text-sm font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.name}
               </a>
             ))}
             <a
               href="#booking"
-              className="btn-gradient px-6 py-2.5 rounded-lg text-sm font-semibold text-primary-foreground transition-all duration-300"
+              className="btn-red px-6 py-2.5 rounded-full text-sm font-semibold text-accent-foreground transition-all duration-300"
             >
               Book Now
             </a>
@@ -87,7 +79,7 @@ const Header = () => {
               <a
                 href="#booking"
                 onClick={() => setIsMenuOpen(false)}
-                className="btn-gradient px-6 py-3 rounded-lg text-sm font-semibold text-primary-foreground transition-all duration-300 text-center mt-2"
+                className="btn-red px-6 py-3 rounded-full text-sm font-semibold text-accent-foreground transition-all duration-300 text-center mt-2"
               >
                 Book Now
               </a>

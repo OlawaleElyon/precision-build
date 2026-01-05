@@ -12,8 +12,8 @@ const Hero = () => {
           alt="Premium Mercedes vehicle"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/50"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50"></div>
       </div>
 
       {/* Content */}
@@ -23,7 +23,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-2"
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-2"
           >
             TRANSFORM YOUR RIDE
           </motion.h1>
@@ -31,16 +31,16 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
           >
-            <span className="text-primary">WITH </span>
-            <span className="text-accent">STYLE</span>
+            <span className="text-foreground">WITH </span>
+            <span className="text-primary">STYLE</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="text-lg md:text-xl text-foreground/80 mb-10 max-w-lg"
+            className="text-lg md:text-xl text-foreground/80 mb-10 max-w-lg italic"
           >
             Premium wraps, tint, and custom graphics.
           </motion.p>
@@ -53,13 +53,13 @@ const Hero = () => {
           >
             <a
               href="#booking"
-              className="btn-gradient px-8 py-4 rounded-lg text-base font-semibold text-primary-foreground transition-all duration-300"
+              className="btn-red px-8 py-4 rounded-full text-base font-semibold text-accent-foreground transition-all duration-300"
             >
               Book Appointment
             </a>
             <a
               href="#projects"
-              className="border-2 border-primary text-foreground px-8 py-4 rounded-lg text-base font-semibold hover:bg-primary/10 hover:border-primary transition-all duration-300"
+              className="border-2 border-primary text-foreground px-8 py-4 rounded-full text-base font-semibold hover:bg-primary/10 transition-all duration-300"
             >
               View Projects
             </a>
@@ -78,7 +78,7 @@ const Hero = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown className="w-8 h-8 text-accent" />
+          <ChevronDown className="w-8 h-8 text-primary" />
         </motion.div>
       </motion.div>
     </section>

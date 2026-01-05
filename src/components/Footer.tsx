@@ -1,4 +1,5 @@
 import { Instagram } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const quickLinks = [
   { name: "Home", href: "#home" },
@@ -18,17 +19,8 @@ const Footer = () => {
           {/* Logo & Description */}
           <div>
             {/* Logo */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg">
-                  <span className="text-primary-foreground font-black text-sm">O</span>
-                </div>
-                <div className="absolute -top-0.5 -right-0.5 w-3 h-1.5 bg-accent rounded-full transform rotate-12"></div>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-foreground font-bold text-lg tracking-wider">OPTIMUS</span>
-                <span className="text-primary text-[8px] tracking-widest -mt-1">DESIGN & CUSTOMS</span>
-              </div>
+            <div className="mb-6">
+              <img src={logo} alt="Optimus Design & Customs" className="h-16 w-auto" />
             </div>
 
             <p className="text-foreground/60 leading-relaxed mb-6">
@@ -37,7 +29,7 @@ const Footer = () => {
 
             {/* Social */}
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/optimusdesign"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all duration-300"
@@ -55,7 +47,7 @@ const Footer = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="block text-foreground/60 hover:text-accent transition-colors duration-300"
+                  className="block text-foreground/60 hover:text-primary transition-colors duration-300"
                 >
                   {link.name}
                 </a>
@@ -69,17 +61,17 @@ const Footer = () => {
             <div className="space-y-3">
               <a
                 href="mailto:optimusxcustoms@gmail.com"
-                className="block text-foreground/60 hover:text-accent transition-colors duration-300"
+                className="block text-foreground/60 hover:text-primary transition-colors duration-300"
               >
                 optimusxcustoms@gmail.com
               </a>
               <a
                 href="tel:+14434771124"
-                className="block text-foreground/60 hover:text-accent transition-colors duration-300"
+                className="block text-foreground/60 hover:text-primary transition-colors duration-300"
               >
                 (443) 477-1124
               </a>
-              <p className="text-foreground/60">Cherry Lane Laurel MD, 20707</p>
+              <p className="text-foreground/60">Cherry Lane, Laurel MD, 20707</p>
             </div>
           </div>
         </div>
@@ -93,13 +85,13 @@ const Footer = () => {
             <div className="flex gap-6">
               <a
                 href="#"
-                className="text-foreground/50 hover:text-accent text-sm transition-colors duration-300"
+                className="text-foreground/50 hover:text-primary text-sm transition-colors duration-300"
               >
                 Privacy Policy
               </a>
               <a
                 href="#"
-                className="text-foreground/50 hover:text-accent text-sm transition-colors duration-300"
+                className="text-foreground/50 hover:text-primary text-sm transition-colors duration-300"
               >
                 Terms of Service
               </a>

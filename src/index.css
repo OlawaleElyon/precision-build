@@ -2,96 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @layer base {
   :root {
-    /* Deep Blue Primary (#1E3A8A) = 221 84% 33% */
-    /* Muted Red Accent (#EF4444) = 0 84% 60% */
-    /* Slate Gray Background (#1E293B) = 217 33% 17% */
-    /* Off-White (#F9FAFB) = 210 20% 98% */
+    /* Dark Blue Background = 217 47% 8% (deeper navy) */
+    /* Primary Cyan/Blue = 193 100% 43% */
+    /* Accent Red = 0 84% 55% */
 
-    --background: 217 33% 17%;
+    --background: 217 47% 8%;
     --foreground: 210 20% 98%;
 
-    --card: 217 35% 14%;
+    --card: 217 45% 11%;
     --card-foreground: 210 20% 98%;
 
-    --popover: 217 35% 14%;
+    --popover: 217 45% 11%;
     --popover-foreground: 210 20% 98%;
 
-    --primary: 221 84% 33%;
-    --primary-foreground: 210 20% 98%;
+    --primary: 193 100% 43%;
+    --primary-foreground: 217 47% 8%;
 
-    --secondary: 217 30% 22%;
+    --secondary: 217 40% 14%;
     --secondary-foreground: 210 20% 98%;
 
-    --muted: 217 25% 25%;
-    --muted-foreground: 217 15% 60%;
+    --muted: 217 35% 18%;
+    --muted-foreground: 217 15% 55%;
 
-    --accent: 0 84% 60%;
+    --accent: 0 84% 55%;
     --accent-foreground: 210 20% 98%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 84% 55%;
     --destructive-foreground: 210 20% 98%;
 
-    --border: 217 25% 25%;
-    --input: 217 30% 20%;
-    --ring: 221 84% 33%;
+    --border: 217 35% 18%;
+    --input: 217 40% 14%;
+    --ring: 193 100% 43%;
 
     --radius: 0.75rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(221, 84%, 33%) 0%, hsl(221, 84%, 45%) 100%);
-    --gradient-cta: linear-gradient(90deg, hsl(221, 84%, 33%) 0%, hsl(221, 84%, 45%) 50%, hsl(0, 84%, 60%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(0, 84%, 60%) 0%, hsl(0, 84%, 50%) 100%);
-
-    --sidebar-background: 217 33% 17%;
+    --sidebar-background: 217 47% 8%;
     --sidebar-foreground: 210 20% 98%;
-    --sidebar-primary: 221 84% 33%;
-    --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 217 30% 22%;
+    --sidebar-primary: 193 100% 43%;
+    --sidebar-primary-foreground: 217 47% 8%;
+    --sidebar-accent: 217 40% 14%;
     --sidebar-accent-foreground: 210 20% 98%;
-    --sidebar-border: 217 25% 25%;
-    --sidebar-ring: 221 84% 33%;
+    --sidebar-border: 217 35% 18%;
+    --sidebar-ring: 193 100% 43%;
   }
 
   .dark {
-    --background: 217 33% 17%;
+    --background: 217 47% 8%;
     --foreground: 210 20% 98%;
-
-    --card: 217 35% 14%;
+    --card: 217 45% 11%;
     --card-foreground: 210 20% 98%;
-
-    --popover: 217 35% 14%;
+    --popover: 217 45% 11%;
     --popover-foreground: 210 20% 98%;
-
-    --primary: 221 84% 33%;
-    --primary-foreground: 210 20% 98%;
-
-    --secondary: 217 30% 22%;
+    --primary: 193 100% 43%;
+    --primary-foreground: 217 47% 8%;
+    --secondary: 217 40% 14%;
     --secondary-foreground: 210 20% 98%;
-
-    --muted: 217 25% 25%;
-    --muted-foreground: 217 15% 60%;
-
-    --accent: 0 84% 60%;
+    --muted: 217 35% 18%;
+    --muted-foreground: 217 15% 55%;
+    --accent: 0 84% 55%;
     --accent-foreground: 210 20% 98%;
-
-    --destructive: 0 84% 60%;
+    --destructive: 0 84% 55%;
     --destructive-foreground: 210 20% 98%;
-
-    --border: 217 25% 25%;
-    --input: 217 30% 20%;
-    --ring: 221 84% 33%;
-
-    --sidebar-background: 217 33% 17%;
+    --border: 217 35% 18%;
+    --input: 217 40% 14%;
+    --ring: 193 100% 43%;
+    --sidebar-background: 217 47% 8%;
     --sidebar-foreground: 210 20% 98%;
-    --sidebar-primary: 221 84% 33%;
-    --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 217 30% 22%;
+    --sidebar-primary: 193 100% 43%;
+    --sidebar-primary-foreground: 217 47% 8%;
+    --sidebar-accent: 217 40% 14%;
     --sidebar-accent-foreground: 210 20% 98%;
-    --sidebar-border: 217 25% 25%;
-    --sidebar-ring: 221 84% 33%;
+    --sidebar-border: 217 35% 18%;
+    --sidebar-ring: 193 100% 43%;
   }
 }
 
@@ -101,52 +85,50 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .font-display {
+    font-family: 'Playfair Display', serif;
   }
 
-  .btn-gradient {
-    background: var(--gradient-cta);
-    box-shadow: 0 4px 15px hsla(221, 84%, 33%, 0.3);
+  .btn-red {
+    background: hsl(0, 84%, 55%);
+    box-shadow: 0 4px 15px hsla(0, 84%, 55%, 0.3);
     transition: all 0.3s ease;
   }
 
-  .btn-gradient:hover {
-    box-shadow: 0 6px 20px hsla(221, 84%, 33%, 0.4);
+  .btn-red:hover {
+    background: hsl(0, 84%, 48%);
+    box-shadow: 0 6px 20px hsla(0, 84%, 55%, 0.4);
     transform: translateY(-1px);
   }
 
-  .btn-accent {
-    background: var(--gradient-accent);
-    box-shadow: 0 4px 15px hsla(0, 84%, 60%, 0.25);
+  .btn-primary {
+    background: hsl(193, 100%, 43%);
+    box-shadow: 0 4px 15px hsla(193, 100%, 43%, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: hsl(193, 100%, 38%);
+    box-shadow: 0 6px 20px hsla(193, 100%, 43%, 0.4);
+    transform: translateY(-1px);
   }
 
   .card-glow {
-    box-shadow: 0 0 40px hsla(221, 84%, 33%, 0.08);
+    box-shadow: 0 0 40px hsla(217, 47%, 8%, 0.5);
     transition: all 0.4s ease;
   }
 
   .card-glow:hover {
-    box-shadow: 0 0 50px hsla(221, 84%, 33%, 0.15);
+    box-shadow: 0 0 50px hsla(193, 100%, 43%, 0.1);
   }
 
   .card-elevated {
-    box-shadow: 0 10px 40px hsla(217, 33%, 10%, 0.4);
-  }
-
-  .text-accent-gradient {
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    box-shadow: 0 10px 40px hsla(217, 47%, 5%, 0.5);
   }
 }
