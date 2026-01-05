@@ -63,10 +63,13 @@ const Projects = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-12"
         >
+          <span className="text-accent text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
+            PORTFOLIO
+          </span>
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
             Our Projects
           </h2>
-          <p className="text-foreground/70 text-lg italic max-w-2xl">
+          <p className="text-foreground/70 text-lg max-w-2xl">
             A showcase of transformations that push the boundaries of automotive design.
           </p>
         </motion.div>
@@ -79,11 +82,11 @@ const Projects = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-              className="relative group rounded-xl overflow-hidden aspect-square"
+              className="relative group rounded-xl overflow-hidden aspect-square shadow-xl"
             >
               {/* Category Badge */}
               <div className="absolute top-4 left-4 z-10">
-                <span className="btn-gradient px-4 py-1.5 rounded-full text-sm font-medium text-primary-foreground">
+                <span className="bg-primary px-4 py-1.5 rounded-full text-sm font-medium text-primary-foreground shadow-lg">
                   {currentCategory.name}
                 </span>
               </div>
@@ -96,7 +99,7 @@ const Projects = () => {
               />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </motion.div>
           ))}
         </div>
@@ -111,7 +114,7 @@ const Projects = () => {
                 onClick={() => setCurrentSlide(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentSlide
-                    ? "w-8 bg-primary"
+                    ? "w-8 bg-accent"
                     : "w-2 bg-foreground/30 hover:bg-foreground/50"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
@@ -123,14 +126,14 @@ const Projects = () => {
           <div className="flex gap-2">
             <button
               onClick={prevSlide}
-              className="w-12 h-12 rounded-lg border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-foreground/50 transition-all duration-300"
+              className="w-12 h-12 rounded-lg border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-primary hover:bg-primary/10 transition-all duration-300"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={nextSlide}
-              className="w-12 h-12 rounded-lg border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-foreground/50 transition-all duration-300"
+              className="w-12 h-12 rounded-lg border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-primary hover:bg-primary/10 transition-all duration-300"
               aria-label="Next slide"
             >
               <ChevronRight className="w-5 h-5" />

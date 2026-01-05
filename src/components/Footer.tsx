@@ -12,18 +12,18 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-card/50 border-t border-border">
+    <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-12">
           {/* Logo & Description */}
           <div>
             {/* Logo */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-3 mb-6">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg">
                   <span className="text-primary-foreground font-black text-sm">O</span>
                 </div>
-                <div className="absolute -top-0.5 -right-0.5 w-3 h-1.5 bg-orange-500 rounded-full transform rotate-12"></div>
+                <div className="absolute -top-0.5 -right-0.5 w-3 h-1.5 bg-accent rounded-full transform rotate-12"></div>
               </div>
               <div className="flex flex-col">
                 <span className="text-foreground font-bold text-lg tracking-wider">OPTIMUS</span>
@@ -31,7 +31,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <p className="text-foreground/60 italic leading-relaxed mb-6">
+            <p className="text-foreground/60 leading-relaxed mb-6">
               Transforming vehicles into art. Premium wraps, tints, and custom designs that reflect your unique style.
             </p>
 
@@ -40,7 +40,7 @@ const Footer = () => {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all duration-300"
               aria-label="Follow us on Instagram"
             >
               <Instagram className="w-5 h-5 text-foreground/70" />
@@ -55,7 +55,7 @@ const Footer = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="block text-foreground/60 hover:text-primary transition-colors duration-300"
+                  className="block text-foreground/60 hover:text-accent transition-colors duration-300"
                 >
                   {link.name}
                 </a>
@@ -69,13 +69,13 @@ const Footer = () => {
             <div className="space-y-3">
               <a
                 href="mailto:optimusxcustoms@gmail.com"
-                className="block text-foreground/60 hover:text-primary transition-colors duration-300"
+                className="block text-foreground/60 hover:text-accent transition-colors duration-300"
               >
                 optimusxcustoms@gmail.com
               </a>
               <a
                 href="tel:+14434771124"
-                className="block text-foreground/60 hover:text-primary transition-colors duration-300"
+                className="block text-foreground/60 hover:text-accent transition-colors duration-300"
               >
                 (443) 477-1124
               </a>
@@ -93,13 +93,13 @@ const Footer = () => {
             <div className="flex gap-6">
               <a
                 href="#"
-                className="text-foreground/50 hover:text-primary text-sm transition-colors duration-300"
+                className="text-foreground/50 hover:text-accent text-sm transition-colors duration-300"
               >
                 Privacy Policy
               </a>
               <a
                 href="#"
-                className="text-foreground/50 hover:text-primary text-sm transition-colors duration-300"
+                className="text-foreground/50 hover:text-accent text-sm transition-colors duration-300"
               >
                 Terms of Service
               </a>

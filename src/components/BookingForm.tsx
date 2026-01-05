@@ -87,6 +87,9 @@ const BookingForm = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
+          <span className="text-accent text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
+            GET STARTED
+          </span>
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
             Book Your Service
           </h2>
@@ -101,14 +104,14 @@ const BookingForm = () => {
             initial={{ opacity: 0, x: -60 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="bg-card rounded-xl p-8 border border-border"
+            className="bg-card rounded-xl p-8 border border-border card-elevated"
           >
             <h3 className="text-2xl font-bold text-foreground mb-8">Get in Touch</h3>
             
             <div className="space-y-6">
               {contactInfo.map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -128,11 +131,11 @@ const BookingForm = () => {
             initial={{ opacity: 0, x: 60 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="bg-card rounded-xl p-8 border border-border"
+            className="bg-card rounded-xl p-8 border border-border card-elevated"
           >
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center h-full py-12">
-                <CheckCircle className="w-16 h-16 text-primary mb-4" />
+                <CheckCircle className="w-16 h-16 text-accent mb-4" />
                 <h3 className="text-2xl font-bold text-foreground mb-2">Thank You!</h3>
                 <p className="text-foreground/70 text-center">
                   Your booking request has been submitted successfully.
@@ -152,7 +155,7 @@ const BookingForm = () => {
                     onChange={handleChange}
                     required
                     placeholder="Your full name"
-                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                   />
                 </div>
 
@@ -168,7 +171,7 @@ const BookingForm = () => {
                     onChange={handleChange}
                     required
                     placeholder="your.email@example.com"
-                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                   />
                 </div>
 
@@ -184,7 +187,7 @@ const BookingForm = () => {
                     onChange={handleChange}
                     required
                     placeholder="+1 (555) 123-4567"
-                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                   />
                 </div>
 
@@ -198,7 +201,7 @@ const BookingForm = () => {
                     value={formData.serviceType}
                     onChange={handleChange}
                     required
-                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 appearance-none cursor-pointer"
+                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 appearance-none cursor-pointer"
                   >
                     <option value="" disabled className="text-foreground/40">
                       Select a service
@@ -222,7 +225,7 @@ const BookingForm = () => {
                     value={formData.preferredDate}
                     onChange={handleChange}
                     required
-                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                   />
                 </div>
 
@@ -237,14 +240,14 @@ const BookingForm = () => {
                     onChange={handleChange}
                     rows={4}
                     placeholder="Tell us about your project..."
-                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 resize-none"
+                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-gradient py-4 rounded-lg text-primary-foreground font-semibold hover:opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full btn-gradient py-4 rounded-lg text-primary-foreground font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Submitting..." : "Submit Request"}
                 </button>

@@ -28,7 +28,7 @@ const Testimonials = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="testimonials" className="py-24 bg-card" ref={ref}>
+    <section id="testimonials" className="py-24 bg-secondary/30" ref={ref}>
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -37,36 +37,36 @@ const Testimonials = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
+          <span className="text-accent text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
             TESTIMONIALS
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
             What Our Clients Say
           </h2>
-          <p className="text-foreground/70 text-lg italic max-w-2xl mx-auto">
+          <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
             Don't just take our word for it — hear from our satisfied customers.
           </p>
         </motion.div>
 
         {/* Testimonial Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-              className="bg-background rounded-xl p-8 border border-border hover:border-primary/30 transition-all duration-500"
+              className="bg-card rounded-xl p-8 border border-border hover:border-primary/30 transition-all duration-500 card-elevated"
             >
               {/* Quote Icon */}
               <div className="mb-6">
-                <Quote className="w-10 h-10 text-primary/30" />
+                <Quote className="w-10 h-10 text-accent/40" />
               </div>
 
               {/* Stars */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                  <Star key={i} className="w-5 h-5 fill-accent text-accent" />
                 ))}
               </div>
 
@@ -76,9 +76,9 @@ const Testimonials = () => {
               </p>
 
               {/* Author */}
-              <div>
+              <div className="border-t border-border pt-4">
                 <h4 className="text-foreground font-semibold">{testimonial.name}</h4>
-                <p className="text-foreground/50 text-sm">{testimonial.role}</p>
+                <p className="text-primary text-sm">{testimonial.role}</p>
               </div>
             </motion.div>
           ))}
