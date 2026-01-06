@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Car, Shield, Sparkles, ArrowRight } from "lucide-react";
+import { Palette, Shield, Sparkles } from "lucide-react";
 import serviceWrap from "@/assets/service-wrap.jpg";
 import serviceTint from "@/assets/service-tint.jpg";
 import serviceDecals from "@/assets/service-decals.jpg";
@@ -9,24 +9,27 @@ import serviceDecals from "@/assets/service-decals.jpg";
 const services = [
   {
     title: "Vehicle Wraps",
-    description: "Full color change, commercial graphics, and custom designs that transform your vehicle into a statement piece.",
-    icon: Car,
+    description: "Full color change and custom design options for every style.",
+    icon: Palette,
     image: serviceWrap,
-    features: ["Full Color Change", "Commercial Graphics", "Protective Film"],
+    duration: "1 hr",
+    price: "$500",
   },
   {
     title: "Window Tint",
-    description: "Professional window tinting for enhanced privacy, UV protection, and a sleek appearance.",
+    description: "Professional tinting that enhances privacy and comfort.",
     icon: Shield,
     image: serviceTint,
-    features: ["UV Protection", "Heat Reduction", "Privacy Enhancement"],
+    duration: "45 mins",
+    price: "$150",
   },
   {
     title: "Custom Decals",
-    description: "Eye-catching graphics and decals that make your vehicle truly unique and memorable.",
+    description: "Unique graphics that make your ride stand out from the crowd.",
     icon: Sparkles,
     image: serviceDecals,
-    features: ["Custom Designs", "Brand Graphics", "Racing Liveries"],
+    duration: "1 hr",
+    price: "$100",
   },
 ];
 
@@ -66,50 +69,42 @@ const Services = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-              className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-500 card-glow"
+              className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-500"
             >
               {/* Image */}
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-52 overflow-hidden">
                 <img
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent"></div>
-                
-                {/* Icon Badge */}
-                <div className="absolute top-4 right-4 w-12 h-12 rounded-xl bg-accent/90 flex items-center justify-center shadow-lg">
-                  <service.icon className="w-6 h-6 text-white" />
-                </div>
               </div>
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                {/* Icon */}
+                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
+                  <service.icon className="w-6 h-6 text-primary" />
+                </div>
+
+                <h3 className="text-xl font-bold text-foreground mb-3">
                   {service.title}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                   {service.description}
                 </p>
 
-                {/* Features */}
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm text-foreground/80">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <a
-                  href="#booking"
-                  className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:gap-3 transition-all duration-300"
-                >
-                  Get a Quote
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                {/* Duration & Price */}
+                <div className="flex items-center justify-between pt-4 border-t border-border">
+                  <div>
+                    <span className="text-muted-foreground text-xs block">Duration</span>
+                    <span className="text-foreground font-semibold">{service.duration}</span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-muted-foreground text-xs block">Starting at</span>
+                    <span className="text-primary font-bold text-xl">{service.price}</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}

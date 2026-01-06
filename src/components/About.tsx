@@ -1,15 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Award, Users, Clock, Shield } from "lucide-react";
+import { Award } from "lucide-react";
 import garageImage from "@/assets/garage.jpg";
 
-const stats = [
-  { icon: Award, label: "Years Experience", value: "5+" },
-  { icon: Users, label: "Happy Clients", value: "500+" },
-  { icon: Clock, label: "Projects Done", value: "1000+" },
-  { icon: Shield, label: "Warranty", value: "5 Year" },
-];
 
 const About = () => {
   const ref = useRef(null);
@@ -75,26 +69,6 @@ const About = () => {
               From full vehicle wraps to precision window tinting and custom graphics, we take pride in delivering exceptional results that exceed our clients' expectations.
             </p>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1, ease: "easeOut" }}
-                  className="flex items-center gap-3"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <stat.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <span className="text-2xl font-bold text-foreground">{stat.value}</span>
-                    <p className="text-muted-foreground text-xs">{stat.label}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>

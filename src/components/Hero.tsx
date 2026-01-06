@@ -77,26 +77,6 @@ const Hero = () => {
             </a>
           </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            className="flex flex-wrap gap-8 mt-16 pt-8 border-t border-border/50"
-          >
-            <div>
-              <span className="text-3xl md:text-4xl font-bold text-gradient">500+</span>
-              <p className="text-muted-foreground text-sm mt-1">Vehicles Wrapped</p>
-            </div>
-            <div>
-              <span className="text-3xl md:text-4xl font-bold text-gradient">5.0</span>
-              <p className="text-muted-foreground text-sm mt-1">Google Rating</p>
-            </div>
-            <div>
-              <span className="text-3xl md:text-4xl font-bold text-gradient">100%</span>
-              <p className="text-muted-foreground text-sm mt-1">Satisfaction</p>
-            </div>
-          </motion.div>
         </div>
       </div>
 
