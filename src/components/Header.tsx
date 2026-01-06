@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
@@ -19,33 +19,48 @@ const Header = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border"
+      className="fixed top-0 left-0 right-0 z-50 glass-effect"
     >
-      <div className="container mx-auto px-6 py-3">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center">
-            <img src={logo} alt="Optimus Design & Customs" className="h-14 w-auto" />
+          <a href="#home" className="flex items-center group">
+            <img 
+              src={logo} 
+              alt="Optimus Design & Customs" 
+              className="h-14 w-auto transition-transform duration-300 group-hover:scale-105" 
+            />
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-foreground/80 hover:text-foreground text-sm font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                className="text-foreground/80 hover:text-foreground text-sm font-medium tracking-wide transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.name}
               </a>
             ))}
+          </nav>
+
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="tel:+14434771124"
+              className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors duration-300"
+            >
+              <Phone className="w-4 h-4" />
+              <span className="text-sm font-medium">(443) 477-1124</span>
+            </a>
             <a
               href="#booking"
-              className="btn-red px-6 py-2.5 rounded-full text-sm font-semibold text-accent-foreground transition-all duration-300"
+              className="btn-red px-6 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-300"
             >
               Book Now
             </a>
-          </nav>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -63,7 +78,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden pt-4 pb-2"
+            className="md:hidden pt-6 pb-4"
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -71,15 +86,22 @@ const Header = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-foreground/80 hover:text-foreground text-sm font-medium transition-colors duration-300 py-2"
+                  className="text-foreground/80 hover:text-foreground text-base font-medium transition-colors duration-300 py-2 border-b border-border/50"
                 >
                   {link.name}
                 </a>
               ))}
               <a
+                href="tel:+14434771124"
+                className="flex items-center gap-2 text-primary py-2"
+              >
+                <Phone className="w-4 h-4" />
+                <span className="font-medium">(443) 477-1124</span>
+              </a>
+              <a
                 href="#booking"
                 onClick={() => setIsMenuOpen(false)}
-                className="btn-red px-6 py-3 rounded-full text-sm font-semibold text-accent-foreground transition-all duration-300 text-center mt-2"
+                className="btn-red px-6 py-3.5 rounded-lg text-base font-semibold text-white transition-all duration-300 text-center mt-2"
               >
                 Book Now
               </a>

@@ -1,13 +1,13 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Phone, Mail, MapPin, Instagram, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, CheckCircle, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "optimusxcustoms@gmail.com" },
-  { icon: Phone, label: "Phone", value: "(443) 477-1124" },
-  { icon: Instagram, label: "Instagram", value: "@optimusdesign" },
-  { icon: MapPin, label: "Address", value: "Cherry Lane, Laurel MD, 20707" },
+  { icon: Mail, label: "Email", value: "optimusxcustoms@gmail.com", href: "mailto:optimusxcustoms@gmail.com" },
+  { icon: Phone, label: "Phone", value: "(443) 477-1124", href: "tel:+14434771124" },
+  { icon: Instagram, label: "Instagram", value: "@optimusdesign", href: "https://instagram.com/optimusdesign" },
+  { icon: MapPin, label: "Address", value: "Cherry Lane, Laurel MD, 20707", href: "#" },
 ];
 
 const serviceOptions = [
@@ -75,7 +75,10 @@ const BookingForm = () => {
   };
 
   return (
-    <section id="booking" className="py-24 bg-background" ref={ref}>
+    <section id="booking" className="py-24 bg-card/50 relative" ref={ref}>
+      {/* Section Divider */}
+      <div className="section-divider absolute top-0 left-0 right-0"></div>
+      
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -84,36 +87,67 @@ const BookingForm = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Book Your <span className="text-primary">Appointment</span>
+          <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
+            Get Started
+          </span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Book Your Appointment
           </h2>
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
+            Ready to transform your vehicle? Fill out the form below and we'll get back to you within 24 hours.
+          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          {/* Contact Info - Smaller */}
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="lg:col-span-2"
+            className="lg:col-span-1"
           >
-            <h3 className="text-2xl font-bold text-foreground mb-4">Get In Touch</h3>
-            <p className="text-foreground/70 mb-8">
-              Ready to transform your ride? Contact us today and let's bring your vision to life.
-            </p>
-            
-            <div className="space-y-5">
-              {contactInfo.map((item) => (
-                <div key={item.label} className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-5 h-5 text-primary" />
+            <div className="bg-card rounded-2xl p-6 border border-border h-full">
+              <h3 className="text-xl font-bold text-foreground mb-2">Contact Info</h3>
+              <p className="text-muted-foreground text-sm mb-6">
+                Reach out to us directly or fill out the form.
+              </p>
+              
+              <div className="space-y-4">
+                {contactInfo.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="flex items-center gap-3 group"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                      <item.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground text-xs block">{item.label}</span>
+                      <span className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">{item.value}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              {/* Business Hours */}
+              <div className="mt-8 pt-6 border-t border-border">
+                <h4 className="text-foreground font-semibold mb-3 text-sm">Business Hours</h4>
+                <div className="space-y-1 text-sm">
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Mon - Fri</span>
+                    <span className="text-foreground">9:00 AM - 6:00 PM</span>
                   </div>
-                  <div>
-                    <span className="text-foreground/50 text-xs block">{item.label}</span>
-                    <span className="text-foreground font-medium text-sm">{item.value}</span>
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Saturday</span>
+                    <span className="text-foreground">10:00 AM - 4:00 PM</span>
+                  </div>
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Sunday</span>
+                    <span className="text-foreground">Closed</span>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </motion.div>
 
@@ -122,22 +156,24 @@ const BookingForm = () => {
             initial={{ opacity: 0, x: 60 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="lg:col-span-3 bg-card rounded-xl p-8 border border-border card-elevated"
+            className="lg:col-span-2 bg-card rounded-2xl p-8 border border-border card-elevated"
           >
             {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center h-full py-12">
-                <CheckCircle className="w-16 h-16 text-primary mb-4" />
+              <div className="flex flex-col items-center justify-center h-full py-16">
+                <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mb-6">
+                  <CheckCircle className="w-10 h-10 text-primary" />
+                </div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">Thank You!</h3>
-                <p className="text-foreground/70 text-center">
-                  Your booking request has been submitted successfully.
+                <p className="text-muted-foreground text-center max-w-md">
+                  Your booking request has been submitted successfully. We'll contact you within 24 hours.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid md:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="text-foreground text-sm font-medium block mb-2">
-                      Name
+                      Full Name *
                     </label>
                     <input
                       type="text"
@@ -146,13 +182,13 @@ const BookingForm = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="Your name"
-                      className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+                      placeholder="John Doe"
+                      className="w-full bg-input border border-border rounded-xl px-4 py-3.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                     />
                   </div>
                   <div>
                     <label htmlFor="email" className="text-foreground text-sm font-medium block mb-2">
-                      Email
+                      Email Address *
                     </label>
                     <input
                       type="email"
@@ -161,16 +197,16 @@ const BookingForm = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="your@email.com"
-                      className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+                      placeholder="john@example.com"
+                      className="w-full bg-input border border-border rounded-xl px-4 py-3.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-5">
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="text-foreground text-sm font-medium block mb-2">
-                      Phone
+                      Phone Number *
                     </label>
                     <input
                       type="tel"
@@ -180,12 +216,12 @@ const BookingForm = () => {
                       onChange={handleChange}
                       required
                       placeholder="(555) 123-4567"
-                      className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+                      className="w-full bg-input border border-border rounded-xl px-4 py-3.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                     />
                   </div>
                   <div>
                     <label htmlFor="serviceType" className="text-foreground text-sm font-medium block mb-2">
-                      Service Type
+                      Service Type *
                     </label>
                     <select
                       id="serviceType"
@@ -193,9 +229,9 @@ const BookingForm = () => {
                       value={formData.serviceType}
                       onChange={handleChange}
                       required
-                      className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 appearance-none cursor-pointer"
+                      className="w-full bg-input border border-border rounded-xl px-4 py-3.5 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 appearance-none cursor-pointer"
                     >
-                      <option value="" disabled className="text-foreground/40">
+                      <option value="" disabled className="text-muted-foreground">
                         Select a service
                       </option>
                       {serviceOptions.map((service) => (
@@ -209,7 +245,7 @@ const BookingForm = () => {
 
                 <div>
                   <label htmlFor="preferredDate" className="text-foreground text-sm font-medium block mb-2">
-                    Preferred Date
+                    Preferred Date *
                   </label>
                   <input
                     type="date"
@@ -218,7 +254,7 @@ const BookingForm = () => {
                     value={formData.preferredDate}
                     onChange={handleChange}
                     required
-                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+                    className="w-full bg-input border border-border rounded-xl px-4 py-3.5 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                   />
                 </div>
 
@@ -232,17 +268,24 @@ const BookingForm = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Tell us about your project..."
-                    className="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 resize-none"
+                    placeholder="Tell us about your vehicle and what you'd like done..."
+                    className="w-full bg-input border border-border rounded-xl px-4 py-3.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-primary py-4 rounded-full text-primary-foreground font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full btn-red py-4 rounded-xl text-white font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  {isSubmitting ? "Submitting..." : "Submit Request"}
+                  {isSubmitting ? (
+                    "Submitting..."
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Submit Request
+                    </>
+                  )}
                 </button>
               </form>
             )}

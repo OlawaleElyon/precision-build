@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Play } from "lucide-react";
 import heroImage from "@/assets/hero-car.jpg";
 
 const Hero = () => {
@@ -9,60 +9,93 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
-          alt="Premium Mercedes vehicle"
+          alt="Premium vehicle customization"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60"></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 pt-20">
-        <div className="max-w-3xl mx-auto text-center md:text-left md:mx-0">
+      <div className="relative z-10 container mx-auto px-6 pt-24">
+        <div className="max-w-3xl">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 bg-secondary/80 border border-border rounded-full px-4 py-2 mb-8"
+          >
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+            <span className="text-sm font-medium text-foreground/80">Laurel, MD's Premier Auto Customs</span>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-2"
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-3"
           >
-            TRANSFORM YOUR RIDE
+            TRANSFORM YOUR
           </motion.h1>
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+            transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-8"
           >
-            <span className="text-foreground">WITH </span>
-            <span className="text-primary">STYLE</span>
+            <span className="text-foreground">RIDE </span>
+            <span className="text-gradient">WITH STYLE</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="text-lg md:text-xl text-foreground/80 mb-10 max-w-lg italic"
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed"
           >
-            Premium wraps, tint, and custom graphics.
+            Premium vehicle wraps, window tinting, and custom graphics that make your car stand out from the crowd.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+            transition={{ duration: 0.8, delay: 0.65, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4"
           >
             <a
               href="#booking"
-              className="btn-red px-8 py-4 rounded-full text-base font-semibold text-accent-foreground transition-all duration-300"
+              className="btn-red px-8 py-4 rounded-lg text-base font-semibold text-white transition-all duration-300 text-center"
             >
               Book Appointment
             </a>
             <a
               href="#projects"
-              className="border-2 border-primary text-foreground px-8 py-4 rounded-full text-base font-semibold hover:bg-primary/10 transition-all duration-300"
+              className="flex items-center justify-center gap-3 border-2 border-primary/50 text-foreground px-8 py-4 rounded-lg text-base font-semibold hover:bg-primary/10 hover:border-primary transition-all duration-300"
             >
-              View Projects
+              <Play className="w-5 h-5 text-primary" />
+              View Our Work
             </a>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+            className="flex flex-wrap gap-8 mt-16 pt-8 border-t border-border/50"
+          >
+            <div>
+              <span className="text-3xl md:text-4xl font-bold text-gradient">500+</span>
+              <p className="text-muted-foreground text-sm mt-1">Vehicles Wrapped</p>
+            </div>
+            <div>
+              <span className="text-3xl md:text-4xl font-bold text-gradient">5.0</span>
+              <p className="text-muted-foreground text-sm mt-1">Google Rating</p>
+            </div>
+            <div>
+              <span className="text-3xl md:text-4xl font-bold text-gradient">100%</span>
+              <p className="text-muted-foreground text-sm mt-1">Satisfaction</p>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -74,12 +107,15 @@ const Hero = () => {
         transition={{ delay: 1.2, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
-        <motion.div
+        <motion.a
+          href="#services"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors cursor-pointer"
         >
-          <ChevronDown className="w-8 h-8 text-primary" />
-        </motion.div>
+          <span className="text-xs font-medium tracking-wider uppercase">Scroll</span>
+          <ChevronDown className="w-6 h-6" />
+        </motion.a>
       </motion.div>
     </section>
   );
