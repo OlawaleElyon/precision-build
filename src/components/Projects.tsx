@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, ArrowUpRight, Sparkles } from "lucide-react";
 import tint1 from "@/assets/tint-1.jpg";
 import tint2 from "@/assets/tint-2.jpg";
 import tint3 from "@/assets/tint-3.jpg";
@@ -12,24 +12,27 @@ import decal1 from "@/assets/decal-1.jpg";
 const projectCategories = [
   {
     name: "Vehicle Wraps",
+    description: "Custom full & partial wraps",
     projects: [
-      { image: wrap1, alt: "Commercial truck wrap" },
-      { image: wrap2, alt: "Full vehicle wrap" },
-      { image: wrap3, alt: "Trailer wrap design" },
+      { image: wrap1, title: "Commercial Truck Wrap", description: "Full vinyl wrap with custom branding" },
+      { image: wrap2, title: "Full Vehicle Wrap", description: "Complete color change transformation" },
+      { image: wrap3, title: "Trailer Wrap Design", description: "Eye-catching mobile advertising" },
     ],
   },
   {
     name: "Window Tint",
+    description: "Premium ceramic tinting",
     projects: [
-      { image: tint1, alt: "Professional window tinting" },
-      { image: tint2, alt: "Sedan window tint" },
-      { image: tint3, alt: "Ceramic window tint" },
+      { image: tint1, title: "Professional Window Tinting", description: "High-quality ceramic film installation" },
+      { image: tint2, title: "Sedan Window Tint", description: "Privacy and UV protection" },
+      { image: tint3, title: "Ceramic Window Tint", description: "Premium heat rejection film" },
     ],
   },
   {
     name: "Custom Decals",
+    description: "Unique graphic designs",
     projects: [
-      { image: decal1, alt: "Custom camo wrap decals" },
+      { image: decal1, title: "Custom Camo Wrap", description: "Personalized camouflage design" },
     ],
   },
 ];
@@ -50,114 +53,165 @@ const Projects = () => {
   const currentCategory = projectCategories[currentSlide];
 
   return (
-    <section id="projects" className="py-24 bg-card/50 relative" ref={ref}>
-      {/* Section Divider */}
-      <div className="section-divider absolute top-0 left-0 right-0"></div>
+    <section id="projects" className="py-32 bg-background relative overflow-hidden" ref={ref}>
+      {/* Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-primary/3 rounded-full blur-3xl"></div>
+      </div>
       
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12"
+          className="text-center mb-16"
         >
-          <div>
-            <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
-              Portfolio
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Our Projects
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-xl leading-relaxed">
-              Browse our gallery of transformations that showcase our craftsmanship and attention to detail.
-            </p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-5 py-2 mb-6"
+          >
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-primary text-sm font-semibold tracking-wide uppercase">Our Portfolio</span>
+          </motion.div>
+          
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            Featured <span className="text-gradient">Projects</span>
+          </h2>
+          <p className="text-subheading text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
+            Explore our collection of premium vehicle transformations, each crafted with precision and passion.
+          </p>
+        </motion.div>
 
-          {/* Category Tabs */}
-          <div className="flex gap-2">
-            {projectCategories.map((category, index) => (
-              <button
-                key={category.name}
-                onClick={() => setCurrentSlide(index)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                  index === currentSlide
-                    ? "bg-primary text-primary-foreground shadow-lg neon-glow"
-                    : "bg-secondary text-foreground/70 hover:bg-secondary/80 hover:text-foreground"
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
+        {/* Category Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-4 mb-16"
+        >
+          {projectCategories.map((category, index) => (
+            <button
+              key={category.name}
+              onClick={() => setCurrentSlide(index)}
+              className={`group relative px-8 py-4 rounded-2xl font-medium transition-all duration-500 ${
+                index === currentSlide
+                  ? "bg-primary text-primary-foreground shadow-2xl neon-glow"
+                  : "glass-premium text-foreground/70 hover:text-foreground hover:border-primary/30"
+              }`}
+            >
+              <span className="relative z-10 text-sm font-semibold tracking-wide">{category.name}</span>
+              {index !== currentSlide && (
+                <span className="block text-xs text-muted-foreground mt-1 group-hover:text-foreground/60 transition-colors">
+                  {category.description}
+                </span>
+              )}
+            </button>
+          ))}
         </motion.div>
 
         {/* Projects Grid */}
-        <div className={`grid gap-6 mb-10 ${currentCategory.projects.length === 1 ? 'md:grid-cols-1 max-w-2xl mx-auto' : 'md:grid-cols-3'}`}>
-          {currentCategory.projects.map((project, index) => (
-            <motion.div
-              key={`${currentSlide}-${index}`}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-              className="relative group rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl card-glow"
-            >
-              {/* Image */}
-              <img
-                src={project.image}
-                alt={project.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.5 }}
+            className={`grid gap-8 mb-16 ${
+              currentCategory.projects.length === 1 
+                ? 'md:grid-cols-1 max-w-3xl mx-auto' 
+                : currentCategory.projects.length === 2
+                  ? 'md:grid-cols-2 max-w-5xl mx-auto'
+                  : 'md:grid-cols-3'
+            }`}
+          >
+            {currentCategory.projects.map((project, index) => (
+              <motion.div
+                key={`${currentSlide}-${index}`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+                className="group relative rounded-3xl overflow-hidden card-premium"
+              >
+                {/* Image Container */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+                  
+                  {/* Corner Accent */}
+                  <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                    <ArrowUpRight className="w-5 h-5 text-primary" />
+                  </div>
+                </div>
+                
+                {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="inline-block bg-primary px-3 py-1 rounded text-sm font-medium text-primary-foreground mb-2">
+                  <span className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold tracking-wider uppercase mb-2">
+                    <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
                     {currentCategory.name}
                   </span>
-                  <p className="text-foreground text-sm">{project.alt}</p>
+                  <h3 className="text-foreground text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-premium text-muted-foreground text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    {project.description}
+                  </p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Controls */}
-        <div className="flex items-center justify-between">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex items-center justify-center gap-8"
+        >
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="w-14 h-14 rounded-2xl glass-premium flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/50 transition-all duration-300 hover:neon-glow"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
           {/* Pagination Dots */}
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             {projectCategories.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`rounded-full transition-all duration-500 ${
                   index === currentSlide
-                    ? "w-10 bg-primary neon-glow"
-                    : "w-2 bg-foreground/30 hover:bg-foreground/50"
+                    ? "w-12 h-3 bg-primary neon-glow"
+                    : "w-3 h-3 bg-foreground/20 hover:bg-foreground/40"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="flex gap-3">
-            <button
-              onClick={prevSlide}
-              className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
+          <button
+            onClick={nextSlide}
+            className="w-14 h-14 rounded-2xl glass-premium flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/50 transition-all duration-300 hover:neon-glow"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </motion.div>
       </div>
     </section>
   );

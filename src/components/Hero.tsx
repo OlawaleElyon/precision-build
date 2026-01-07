@@ -27,7 +27,7 @@ const Hero = () => {
             className="inline-flex items-center gap-2 bg-secondary/80 border border-border rounded-full px-4 py-2 mb-8"
           >
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-            <span className="text-sm font-medium text-foreground/80">Laurel, MD's Premier Auto Customs</span>
+            <span className="text-sm font-medium text-foreground/80">Laurel, MD's Optimus Customz</span>
           </motion.div>
 
           <motion.h1
