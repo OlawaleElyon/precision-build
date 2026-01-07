@@ -1,39 +1,35 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import projectWrap1 from "@/assets/project-wrap-1.jpg";
-import projectWrap2 from "@/assets/project-wrap-2.jpg";
-import projectWrap3 from "@/assets/project-wrap-3.jpg";
-import projectTint1 from "@/assets/project-tint-1.jpg";
-import projectTint2 from "@/assets/project-tint-2.jpg";
-import projectTint3 from "@/assets/project-tint-3.jpg";
-import projectDecal1 from "@/assets/project-decal-1.jpg";
-import projectDecal2 from "@/assets/project-decal-2.jpg";
-import projectDecal3 from "@/assets/project-decal-3.jpg";
+import tint1 from "@/assets/tint-1.jpg";
+import tint2 from "@/assets/tint-2.jpg";
+import tint3 from "@/assets/tint-3.jpg";
+import wrap1 from "@/assets/wrap-1.jpg";
+import wrap2 from "@/assets/wrap-2.jpg";
+import wrap3 from "@/assets/wrap-3.jpg";
+import decal1 from "@/assets/decal-1.jpg";
 
 const projectCategories = [
   {
     name: "Vehicle Wraps",
     projects: [
-      { image: projectWrap1, alt: "Custom vehicle wrap project" },
-      { image: projectWrap2, alt: "Commercial truck wrap" },
-      { image: projectWrap3, alt: "Full color change wrap" },
+      { image: wrap1, alt: "Commercial truck wrap" },
+      { image: wrap2, alt: "Full vehicle wrap" },
+      { image: wrap3, alt: "Trailer wrap design" },
     ],
   },
   {
     name: "Window Tint",
     projects: [
-      { image: projectTint1, alt: "Professional window tinting" },
-      { image: projectTint2, alt: "SUV window tint" },
-      { image: projectTint3, alt: "Luxury car tint" },
+      { image: tint1, alt: "Professional window tinting" },
+      { image: tint2, alt: "Sedan window tint" },
+      { image: tint3, alt: "Ceramic window tint" },
     ],
   },
   {
     name: "Custom Decals",
     projects: [
-      { image: projectDecal1, alt: "Custom decal graphics" },
-      { image: projectDecal2, alt: "Racing livery design" },
-      { image: projectDecal3, alt: "Brand graphics" },
+      { image: decal1, alt: "Custom camo wrap decals" },
     ],
   },
 ];
@@ -86,7 +82,7 @@ const Projects = () => {
                 onClick={() => setCurrentSlide(index)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   index === currentSlide
-                    ? "bg-accent text-white shadow-lg"
+                    ? "bg-primary text-primary-foreground shadow-lg neon-glow"
                     : "bg-secondary text-foreground/70 hover:bg-secondary/80 hover:text-foreground"
                 }`}
               >
@@ -97,7 +93,7 @@ const Projects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
+        <div className={`grid gap-6 mb-10 ${currentCategory.projects.length === 1 ? 'md:grid-cols-1 max-w-2xl mx-auto' : 'md:grid-cols-3'}`}>
           {currentCategory.projects.map((project, index) => (
             <motion.div
               key={`${currentSlide}-${index}`}
@@ -116,7 +112,7 @@ const Projects = () => {
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="inline-block bg-accent px-3 py-1 rounded text-sm font-medium text-white mb-2">
+                  <span className="inline-block bg-primary px-3 py-1 rounded text-sm font-medium text-primary-foreground mb-2">
                     {currentCategory.name}
                   </span>
                   <p className="text-foreground text-sm">{project.alt}</p>
@@ -136,7 +132,7 @@ const Projects = () => {
                 onClick={() => setCurrentSlide(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentSlide
-                    ? "w-10 bg-primary"
+                    ? "w-10 bg-primary neon-glow"
                     : "w-2 bg-foreground/30 hover:bg-foreground/50"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
@@ -148,14 +144,14 @@ const Projects = () => {
           <div className="flex gap-3">
             <button
               onClick={prevSlide}
-              className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-primary hover:bg-primary/10 transition-all duration-300"
+              className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={nextSlide}
-              className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-primary hover:bg-primary/10 transition-all duration-300"
+              className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
               aria-label="Next slide"
             >
               <ChevronRight className="w-5 h-5" />

@@ -64,7 +64,7 @@ const Hero = () => {
           >
             <a
               href="#booking"
-              className="btn-red px-8 py-4 rounded-lg text-base font-semibold text-white transition-all duration-300 text-center"
+              className="btn-neon px-8 py-4 rounded-xl text-base font-semibold text-white transition-all duration-300 text-center"
             >
               Book Appointment
             </a>
