@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Star, ChevronLeft, ChevronRight, Quote, Sparkles } from "lucide-react";
 
 const testimonialPages = [
   [
@@ -53,32 +53,43 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-24 bg-background relative" ref={ref}>
-      {/* Section Divider */}
-      <div className="section-divider absolute top-0 left-0 right-0"></div>
+    <section id="testimonials" className="py-32 bg-card/30 relative overflow-hidden" ref={ref}>
+      {/* Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/3 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+      </div>
       
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
-            Testimonials
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-            What Our Clients Say
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-5 py-2 mb-6"
+          >
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-primary text-sm font-semibold tracking-wide uppercase">Testimonials</span>
+          </motion.div>
+          
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            Client <span className="text-gradient">Reviews</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-6 leading-relaxed">
-            Real reviews from satisfied customers who trusted us with their vehicles.
+          <p className="text-subheading text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-8">
+            Discover why our clients trust us with their vehicles. Real stories from satisfied customers.
           </p>
+          
           <a
             href="https://www.google.com/maps/place/Optimus+Design+%26+Customs"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/80 px-5 py-2.5 rounded-lg transition-colors"
+            className="inline-flex items-center gap-3 glass-premium px-6 py-3 rounded-xl hover:border-primary/30 transition-all duration-300 group"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -86,87 +97,100 @@ const Testimonials = () => {
               <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
-            <span className="font-medium text-foreground">View all reviews on Google</span>
+            <span className="font-medium text-foreground group-hover:text-primary transition-colors">View all reviews on Google</span>
           </a>
         </motion.div>
 
         {/* Testimonial Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
-          {testimonialPages[currentPage].map((testimonial, index) => (
-            <motion.div
-              key={`${currentPage}-${testimonial.name}`}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-              className="bg-card rounded-2xl p-6 border border-border hover:border-primary/30 transition-all duration-500 card-glow relative"
-            >
-              {/* Quote Icon */}
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/20" />
-              
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-
-              {/* Content */}
-              <p className="text-foreground/90 leading-relaxed mb-6">
-                "{testimonial.content}"
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3 border-t border-border pt-4">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="text-primary font-bold text-sm">
-                    {testimonial.name.charAt(0)}
-                  </span>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPage}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5 }}
+            className="grid md:grid-cols-3 gap-8 mb-16"
+          >
+            {testimonialPages[currentPage].map((testimonial, index) => (
+              <motion.div
+                key={`${currentPage}-${testimonial.name}`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+                className="group relative card-premium rounded-3xl p-8 hover:border-primary/30"
+              >
+                {/* Quote Icon */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <Quote className="w-5 h-5 text-primary" />
                 </div>
-                <div>
-                  <h4 className="text-foreground font-semibold text-sm">{testimonial.name}</h4>
-                  <p className="text-muted-foreground text-xs">{testimonial.time}</p>
+                
+                {/* Stars */}
+                <div className="flex gap-1.5 mb-6 pt-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400 drop-shadow-sm" />
+                  ))}
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+
+                {/* Content */}
+                <p className="text-premium text-foreground/90 text-base leading-relaxed mb-8">
+                  "{testimonial.content}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 pt-6 border-t border-border/50">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/20">
+                    <span className="text-primary font-bold text-lg">
+                      {testimonial.name.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <h4 className="text-foreground font-semibold">{testimonial.name}</h4>
+                    <p className="text-muted-foreground text-sm">{testimonial.time}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Controls */}
-        <div className="flex items-center justify-between mb-12">
-          {/* Pagination Dots */}
-          <div className="flex gap-2">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex items-center justify-center gap-8 mb-16"
+        >
+          <button
+            onClick={prevPage}
+            className="w-14 h-14 rounded-2xl glass-premium flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/50 transition-all duration-300 hover:neon-glow"
+            aria-label="Previous page"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <div className="flex gap-3">
             {testimonialPages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentPage(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`rounded-full transition-all duration-500 ${
                   index === currentPage
-                    ? "w-10 bg-primary"
-                    : "w-2 bg-foreground/30 hover:bg-foreground/50"
+                    ? "w-12 h-3 bg-primary neon-glow"
+                    : "w-3 h-3 bg-foreground/20 hover:bg-foreground/40"
                 }`}
                 aria-label={`Go to page ${index + 1}`}
               />
             ))}
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="flex gap-3">
-            <button
-              onClick={prevPage}
-              className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-primary hover:bg-primary/10 transition-all duration-300"
-              aria-label="Previous page"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={nextPage}
-              className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-primary hover:bg-primary/10 transition-all duration-300"
-              aria-label="Next page"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
+          <button
+            onClick={nextPage}
+            className="w-14 h-14 rounded-2xl glass-premium flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/50 transition-all duration-300 hover:neon-glow"
+            aria-label="Next page"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </motion.div>
 
         {/* Google Rating Badge */}
         <motion.div
@@ -175,16 +199,19 @@ const Testimonials = () => {
           transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
           className="flex justify-center"
         >
-          <div className="inline-flex items-center gap-4 bg-card border border-border rounded-2xl px-8 py-4 shadow-xl">
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-              ))}
+          <div className="inline-flex items-center gap-6 glass-premium rounded-3xl px-10 py-6 border-primary/20 hover:border-primary/40 transition-all duration-300">
+            <div className="flex flex-col items-center">
+              <span className="text-foreground font-display text-5xl font-bold">5.0</span>
+              <div className="flex gap-1 mt-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
             </div>
-            <div className="h-8 w-px bg-border"></div>
-            <div>
-              <span className="text-foreground font-bold text-2xl">5.0</span>
-              <p className="text-muted-foreground text-xs">Based on 11 Google Reviews</p>
+            <div className="w-px h-16 bg-gradient-to-b from-transparent via-border to-transparent"></div>
+            <div className="text-left">
+              <p className="text-foreground font-semibold text-lg">Google Reviews</p>
+              <p className="text-premium text-muted-foreground text-sm">Based on 11 verified reviews</p>
             </div>
           </div>
         </motion.div>
