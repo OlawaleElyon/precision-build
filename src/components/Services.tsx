@@ -57,7 +57,7 @@ const Services = () => {
             Our Services
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Professional automotive customization services that elevate your vehicle's appearance and protection.
+            Professional automotive customization to enhance your vehicle's look and protection.
           </p>
         </motion.div>
 

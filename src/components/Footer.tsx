@@ -29,7 +29,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             {/* Logo */}
             <div className="mb-6">
-              <img src={logo} alt="Optimus Design & Customs" className="h-16 w-auto" />
+              <img src={logo} alt="Optimus Design & Customs" className="h-20 md:h-24 w-auto drop-shadow-[0_0_20px_hsla(199,100%,50%,0.3)]" />
             </div>
 
             <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
@@ -39,7 +39,7 @@ const Footer = () => {
             {/* Social */}
             <div className="flex gap-3">
               <a
-                href="https://instagram.com/optimusdesign"
+                href="https://instagram.com/optimusdesigncustomz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white transition-all duration-300"

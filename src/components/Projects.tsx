@@ -86,31 +86,33 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Category Navigation */}
+        {/* Category Navigation - Centered like reference image */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-16"
+          className="flex justify-center mb-16"
         >
-          {projectCategories.map((category, index) => (
-            <button
-              key={category.name}
-              onClick={() => setCurrentSlide(index)}
-              className={`group relative px-8 py-4 rounded-2xl font-medium transition-all duration-500 ${
-                index === currentSlide
-                  ? "bg-primary text-primary-foreground shadow-2xl neon-glow"
-                  : "glass-premium text-foreground/70 hover:text-foreground hover:border-primary/30"
-              }`}
-            >
-              <span className="relative z-10 text-sm font-semibold tracking-wide">{category.name}</span>
-              {index !== currentSlide && (
-                <span className="block text-xs text-muted-foreground mt-1 group-hover:text-foreground/60 transition-colors">
-                  {category.description}
-                </span>
-              )}
-            </button>
-          ))}
+          <div className="inline-flex items-center gap-3 p-2 rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50">
+            {projectCategories.map((category, index) => (
+              <button
+                key={category.name}
+                onClick={() => setCurrentSlide(index)}
+                className={`relative px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                  index === currentSlide
+                    ? "bg-primary text-primary-foreground shadow-lg"
+                    : "text-foreground/70 hover:text-foreground hover:bg-secondary/50"
+                }`}
+              >
+                <span className="text-sm font-semibold">{category.name}</span>
+                {index !== currentSlide && (
+                  <span className="block text-xs text-muted-foreground mt-0.5">
+                    {category.description}
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Projects Grid */}

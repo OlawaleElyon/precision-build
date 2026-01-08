@@ -62,11 +62,8 @@ const About = () => {
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
               Crafting Automotive Excellence
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              Optimus Design & Customs is a premier automotive customization shop dedicated to transforming vehicles into works of art. Our team of skilled professionals brings years of experience and passion to every project.
-            </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              From full vehicle wraps to precision window tinting and custom graphics, we take pride in delivering exceptional results that exceed our clients' expectations.
+              Optimus Design & Customs is a top automotive customization shop that transforms vehicles into works of art. Our skilled team brings experience and passion to every project. From full vehicle wraps to window tinting and custom graphics, we deliver results that exceed our clients' expectations.
             </p>
 
           </motion.div>
