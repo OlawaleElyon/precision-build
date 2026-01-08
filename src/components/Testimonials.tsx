@@ -82,11 +82,11 @@ const Testimonials = () => {
             Client <span className="text-gradient">Reviews</span>
           </h2>
           <p className="text-subheading text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-8">
-            Discover why our clients trust us with their vehicles. Real stories from satisfied customers.
+            See why clients trust us with their vehicles and hear their stories.
           </p>
           
           <a
-            href="https://www.google.com/maps/place/Optimus+Design+%26+Customs"
+            href="https://share.google/wUjEnLqASfUcIJ0rC"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 glass-premium px-6 py-3 rounded-xl hover:border-primary/30 transition-all duration-300 group"

@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 const contactInfo = [
   { icon: Mail, label: "Email", value: "optimusxcustoms@gmail.com", href: "mailto:optimusxcustoms@gmail.com" },
   { icon: Phone, label: "Phone", value: "(443) 477-1124", href: "tel:+14434771124" },
-  { icon: Instagram, label: "Instagram", value: "@optimusdesign", href: "https://instagram.com/optimusdesign" },
+  { icon: Instagram, label: "Instagram", value: "@optimusdesigncustomz", href: "https://instagram.com/optimusdesigncustomz" },
   { icon: MapPin, label: "Address", value: "Cherry Lane, Laurel MD, 20707", href: "#" },
 ];
 
@@ -135,12 +135,28 @@ const BookingForm = () => {
                 <h4 className="text-foreground font-semibold mb-3 text-sm">Business Hours</h4>
                 <div className="space-y-1 text-sm">
                   <div className="flex justify-between text-muted-foreground">
-                    <span>Mon - Fri</span>
-                    <span className="text-foreground">9:00 AM - 6:00 PM</span>
+                    <span>Monday</span>
+                    <span className="text-foreground">8:30 AM – 5:00 PM</span>
+                  </div>
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Tuesday</span>
+                    <span className="text-foreground">8:30 AM – 5:00 PM</span>
+                  </div>
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Wednesday</span>
+                    <span className="text-foreground">8:30 AM – 5:00 PM</span>
+                  </div>
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Thursday</span>
+                    <span className="text-foreground">8:30 AM – 5:00 PM</span>
+                  </div>
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Friday</span>
+                    <span className="text-foreground">8:30 AM – 5:30 PM</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground">
                     <span>Saturday</span>
-                    <span className="text-foreground">10:00 AM - 4:00 PM</span>
+                    <span className="text-foreground">8:30 AM – 5:30 PM</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground">
                     <span>Sunday</span>

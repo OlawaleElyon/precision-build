@@ -24,25 +24,27 @@ const Header = () => {
       <div className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between bg-card/60 backdrop-blur-xl rounded-2xl px-6 py-4 border border-border/50 shadow-2xl">
           {/* Logo */}
-          <a href="#home" className="flex items-center group">
+          <a href="#home" className="flex items-center group flex-shrink-0">
             <img 
               src={logo} 
               alt="Optimus Design & Customs" 
-              className="h-12 md:h-14 w-auto transition-all duration-300 group-hover:scale-105 drop-shadow-[0_0_15px_hsla(199,100%,50%,0.3)]" 
+              className="h-14 md:h-16 lg:h-18 w-auto transition-all duration-300 group-hover:scale-105 drop-shadow-[0_0_20px_hsla(199,100%,50%,0.4)]" 
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-foreground/70 hover:text-primary text-sm font-medium px-4 py-2 rounded-lg hover:bg-primary/10 transition-all duration-300"
-              >
-                {link.name}
-              </a>
-            ))}
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden lg:flex items-center justify-center flex-1">
+            <div className="flex items-center gap-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-foreground/80 hover:text-primary text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-primary/10 transition-all duration-300"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
           </nav>
 
           {/* CTA Buttons */}
