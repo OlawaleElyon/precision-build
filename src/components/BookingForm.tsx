@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 const contactInfo = [
   { icon: Mail, label: "Email", value: "optimusxcustoms@gmail.com", href: "mailto:optimusxcustoms@gmail.com" },
   { icon: Phone, label: "Phone", value: "(443) 477-1124", href: "tel:+14434771124" },
-  { icon: Instagram, label: "Instagram", value: "@optimusdesigncustomz", href: "https://instagram.com/optimusdesigncustomz" },
+  { icon: Instagram, label: "Instagram", value: "@optimus.customs", href: "https://instagram.com/optimus.customs" },
   { icon: MapPin, label: "Address", value: "Cherry Lane, Laurel MD, 20707", href: "#" },
 ];
 

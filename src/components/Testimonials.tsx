@@ -25,6 +25,46 @@ const testimonialPages = [
   ],
   [
     {
+      name: "nehemiah lattie",
+      time: "2 months ago",
+      content: "Absolutely blown away by the quality and professionalism of Optimums. Not only was the craftsmanship top tier, the job was completed on time. They helped me choose the perfect wrap and tints for my vehicle. My finish wrap and tint look flawless and smooth-like a factory finish. All for a fair price if may add. 5 STAR would recommend.",
+      rating: 5,
+    },
+    {
+      name: "Beeka B",
+      time: "2 months ago",
+      content: "I couldn't be happier with the wrap on my car! The attention to detail was flawless smooth lines, no bubbles, and the finish looks factory-perfect. My car literally turned heads the moment I drove it out. Professional, reliable, and clearly passionate about the craft. If you're looking to transform your vehicle with quality work that lasts, this is the place to go. Highly recommend!",
+      rating: 5,
+    },
+    {
+      name: "Darryl Bagley",
+      time: "2 months ago",
+      content: "Ivan did a wrap for my 2008 Escalade ESV and tinted the windows. He is polite professional, cares about his customers and takes pride in his work unlike many business owners today. I would give him 10 stars not just 5. I will be working with him in the future and if you are reading this you won't be disappointed.",
+      rating: 5,
+    },
+  ],
+  [
+    {
+      name: "Lester",
+      time: "2 months ago",
+      content: "Great guy, he's very helpful and professional with his wrapping and tints. The waiting room is also nice.",
+      rating: 5,
+    },
+    {
+      name: "palung g",
+      time: "a week ago",
+      content: "Reasonable Prices with amazing quality and a lounge room to wait in.",
+      rating: 5,
+    },
+    {
+      name: "Anderson Mayorga",
+      time: "2 months ago",
+      content: "Does great work, very reliable and gets it exactly how you want it.",
+      rating: 5,
+    },
+  ],
+  [
+    {
       name: "Donovan Braithwaite",
       time: "2 months ago",
       content: "This was a wonderful experience and Ivan does a great job",
