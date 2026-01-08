@@ -93,7 +93,7 @@ const BookingForm = () => {
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
             Book Your Appointment
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed font-display italic">
             Ready to transform your vehicle? Fill out the form below and we'll get back to you within 24 hours.
           </p>
         </motion.div>
