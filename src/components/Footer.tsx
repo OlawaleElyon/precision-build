@@ -39,7 +39,7 @@ const Footer = () => {
             {/* Social */}
             <div className="flex gap-3">
               <a
-                href="https://instagram.com/optimusdesigncustomz"
+                href="https://instagram.com/optimus.customs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white transition-all duration-300"

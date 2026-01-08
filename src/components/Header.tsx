@@ -28,7 +28,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="Optimus Design & Customs" 
-              className="h-14 md:h-16 lg:h-18 w-auto transition-all duration-300 group-hover:scale-105 drop-shadow-[0_0_20px_hsla(199,100%,50%,0.4)]" 
+              className="h-16 md:h-20 lg:h-24 w-auto transition-all duration-300 group-hover:scale-105 drop-shadow-[0_0_20px_hsla(199,100%,50%,0.4)]" 
             />
           </a>
 
