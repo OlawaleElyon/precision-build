@@ -6,8 +6,6 @@ const carPhrases = [
   "Wrapping Excellence",
   "Tinting Perfection",
   "Custom Graphics",
-  "Transforming Rides",
-  "Premium Finishes",
 ];
 
 interface LoadingScreenProps {
@@ -53,7 +51,7 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
           </div>
 
           {/* Center content */}
-          <div className="relative flex flex-col items-center">
+          <div className="relative flex flex-col items-center -mt-16">
             {/* Logo with glow effect */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5, y: 20 }}
