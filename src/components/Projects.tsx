@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowUpRight, Sparkles } from "lucide-react";
 import tint1 from "@/assets/tint-1.jpg";
@@ -41,6 +41,15 @@ const Projects = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Listen for category changes from footer
+  useEffect(() => {
+    const handleCategoryChange = (e: CustomEvent) => {
+      setCurrentSlide(e.detail);
+    };
+    window.addEventListener('setProjectCategory', handleCategoryChange as EventListener);
+    return () => window.removeEventListener('setProjectCategory', handleCategoryChange as EventListener);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % projectCategories.length);

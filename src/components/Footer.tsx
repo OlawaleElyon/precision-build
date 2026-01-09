@@ -11,11 +11,9 @@ const quickLinks = [
 ];
 
 const services = [
-  "Vehicle Wraps",
-  "Window Tinting",
-  "Custom Decals",
-  "Commercial Graphics",
-  "Color Change Wraps",
+  { name: "Vehicle Wraps", categoryIndex: 0 },
+  { name: "Window Tinting", categoryIndex: 1 },
+  { name: "Custom Decals", categoryIndex: 2 },
 ];
 
 const Footer = () => {
@@ -78,8 +76,22 @@ const Footer = () => {
             <h4 className="text-foreground font-bold text-lg mb-6">Services</h4>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service} className="text-muted-foreground text-sm">
-                  {service}
+                <li key={service.name}>
+                  <a
+                    href="#projects"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const projectsSection = document.getElementById('projects');
+                      if (projectsSection) {
+                        projectsSection.scrollIntoView({ behavior: 'smooth' });
+                        // Dispatch custom event to set category
+                        window.dispatchEvent(new CustomEvent('setProjectCategory', { detail: service.categoryIndex }));
+                      }
+                    }}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm cursor-pointer"
+                  >
+                    {service.name}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -103,10 +115,15 @@ const Footer = () => {
                 <Phone className="w-5 h-5 flex-shrink-0" />
                 (443) 477-1124
               </a>
-              <div className="flex items-start gap-3 text-muted-foreground text-sm">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Cherry+Lane+Laurel+MD+20707"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
+              >
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
                 Cherry Lane, Laurel MD, 20707
-              </div>
+              </a>
             </div>
           </div>
         </div>
