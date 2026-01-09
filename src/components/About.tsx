@@ -62,7 +62,7 @@ const About = () => {
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
               Crafting Automotive Excellence
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8 font-display italic">
+            <p className="text-foreground/80 text-lg leading-relaxed mb-8 font-display italic">
               Optimus Design & Customs is a top automotive customization shop that transforms vehicles into works of art. Our skilled team brings experience and passion to every project. From full vehicle wraps to window tinting and custom graphics, we deliver results that exceed our clients' expectations.
             </p>
 
