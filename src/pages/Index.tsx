@@ -13,10 +13,10 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time for assets
+    // Give users time to see the loading screen
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);

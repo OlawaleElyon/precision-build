@@ -22,7 +22,7 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
     
     const interval = setInterval(() => {
       setPhraseIndex((prev) => (prev + 1) % carPhrases.length);
-    }, 600);
+    }, 1200);
 
     return () => clearInterval(interval);
   }, [isLoading]);
@@ -32,8 +32,8 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
       {isLoading && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
         >
           {/* Animated background gradients */}
