@@ -1,11 +1,32 @@
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.png";
+
+const carPhrases = [
+  "Wrapping Excellence",
+  "Tinting Perfection",
+  "Custom Graphics",
+  "Transforming Rides",
+  "Premium Finishes",
+];
 
 interface LoadingScreenProps {
   isLoading: boolean;
 }
 
 const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+
+  useEffect(() => {
+    if (!isLoading) return;
+    
+    const interval = setInterval(() => {
+      setPhraseIndex((prev) => (prev + 1) % carPhrases.length);
+    }, 600);
+
+    return () => clearInterval(interval);
+  }, [isLoading]);
+
   return (
     <AnimatePresence>
       {isLoading && (
@@ -83,21 +104,26 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
               />
             </motion.div>
 
-            {/* Loading text */}
-            <motion.p
+            {/* Rotating car phrases */}
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-6 text-muted-foreground text-sm tracking-[0.3em] uppercase font-medium"
+              className="mt-6 h-8 overflow-hidden"
             >
-              Loading
-              <motion.span
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                ...
-              </motion.span>
-            </motion.p>
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={phraseIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-primary text-sm tracking-[0.2em] uppercase font-semibold"
+                >
+                  {carPhrases[phraseIndex]}
+                </motion.p>
+              </AnimatePresence>
+            </motion.div>
           </div>
 
           {/* Corner decorations */}
