@@ -32,32 +32,36 @@ const handler = async (req: Request): Promise<Response> => {
       to: ["optimusxcustoms@gmail.com"],
       subject: `New Booking Request: ${serviceType} from ${name}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #333; border-bottom: 2px solid #e74c3c; padding-bottom: 10px;">New Booking Request</h1>
-          
-          <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h2 style="color: #e74c3c; margin-top: 0;">Customer Information</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
+        <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-radius: 12px; overflow: hidden;">
+          <div style="background: linear-gradient(90deg, #00b4d8 0%, #0077b6 100%); padding: 30px; text-align: center;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">New Booking Request</h1>
           </div>
           
-          <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h2 style="color: #e74c3c; margin-top: 0;">Service Details</h2>
-            <p><strong>Service Type:</strong> ${serviceType}</p>
-            <p><strong>Preferred Date:</strong> ${preferredDate}</p>
+          <div style="padding: 30px;">
+            <div style="background: rgba(0, 180, 216, 0.1); border: 1px solid rgba(0, 180, 216, 0.3); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+              <h2 style="color: #00b4d8; margin: 0 0 15px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">Customer Information</h2>
+              <p style="color: #e2e8f0; margin: 8px 0;"><strong style="color: #00b4d8;">Name:</strong> ${name}</p>
+              <p style="color: #e2e8f0; margin: 8px 0;"><strong style="color: #00b4d8;">Email:</strong> <a href="mailto:${email}" style="color: #00b4d8;">${email}</a></p>
+              <p style="color: #e2e8f0; margin: 8px 0;"><strong style="color: #00b4d8;">Phone:</strong> <a href="tel:${phone}" style="color: #00b4d8;">${phone}</a></p>
+            </div>
+            
+            <div style="background: rgba(0, 180, 216, 0.1); border: 1px solid rgba(0, 180, 216, 0.3); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+              <h2 style="color: #00b4d8; margin: 0 0 15px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">Service Details</h2>
+              <p style="color: #e2e8f0; margin: 8px 0;"><strong style="color: #00b4d8;">Service Type:</strong> ${serviceType}</p>
+              <p style="color: #e2e8f0; margin: 8px 0;"><strong style="color: #00b4d8;">Preferred Date:</strong> ${preferredDate}</p>
+            </div>
+            
+            ${message ? `
+            <div style="background: rgba(0, 180, 216, 0.1); border: 1px solid rgba(0, 180, 216, 0.3); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+              <h2 style="color: #00b4d8; margin: 0 0 15px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">Project Details</h2>
+              <p style="color: #e2e8f0; margin: 0;">${message}</p>
+            </div>
+            ` : ''}
+            
+            <p style="color: #64748b; font-size: 12px; margin-top: 30px; text-align: center;">
+              This booking request was submitted through the Optimus Customs website.
+            </p>
           </div>
-          
-          ${message ? `
-          <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h2 style="color: #e74c3c; margin-top: 0;">Project Details</h2>
-            <p>${message}</p>
-          </div>
-          ` : ''}
-          
-          <p style="color: #666; font-size: 12px; margin-top: 30px;">
-            This booking request was submitted through the Optimus Customs website.
-          </p>
         </div>
       `,
     });
@@ -70,35 +74,39 @@ const handler = async (req: Request): Promise<Response> => {
       to: [email],
       subject: "We received your booking request!",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #333; border-bottom: 2px solid #e74c3c; padding-bottom: 10px;">Thank You, ${name}!</h1>
-          
-          <p style="font-size: 16px; color: #555;">
-            We've received your booking request for <strong>${serviceType}</strong> on <strong>${preferredDate}</strong>.
-          </p>
-          
-          <p style="font-size: 16px; color: #555;">
-            Our team will review your request and get back to you within 24 hours to confirm your appointment.
-          </p>
-          
-          <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h2 style="color: #e74c3c; margin-top: 0;">Your Request Summary</h2>
-            <p><strong>Service:</strong> ${serviceType}</p>
-            <p><strong>Preferred Date:</strong> ${preferredDate}</p>
-            ${message ? `<p><strong>Project Details:</strong> ${message}</p>` : ''}
+        <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-radius: 12px; overflow: hidden;">
+          <div style="background: linear-gradient(90deg, #00b4d8 0%, #0077b6 100%); padding: 30px; text-align: center;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700;">Thank You, ${name}!</h1>
           </div>
           
-          <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0;">Contact Us</h3>
-            <p>📞 (443) 477-1124</p>
-            <p>📧 optimusxcustoms@gmail.com</p>
-            <p>📍 Cherry Lane, Laurel MD, 20707</p>
+          <div style="padding: 30px;">
+            <p style="font-size: 16px; color: #e2e8f0; line-height: 1.6;">
+              We've received your booking request for <strong style="color: #00b4d8;">${serviceType}</strong> on <strong style="color: #00b4d8;">${preferredDate}</strong>.
+            </p>
+            
+            <p style="font-size: 16px; color: #e2e8f0; line-height: 1.6;">
+              Our team will review your request and get back to you within 24 hours to confirm your appointment.
+            </p>
+            
+            <div style="background: rgba(0, 180, 216, 0.1); border: 1px solid rgba(0, 180, 216, 0.3); padding: 20px; border-radius: 8px; margin: 25px 0;">
+              <h2 style="color: #00b4d8; margin: 0 0 15px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">Your Request Summary</h2>
+              <p style="color: #e2e8f0; margin: 8px 0;"><strong style="color: #00b4d8;">Service:</strong> ${serviceType}</p>
+              <p style="color: #e2e8f0; margin: 8px 0;"><strong style="color: #00b4d8;">Preferred Date:</strong> ${preferredDate}</p>
+              ${message ? `<p style="color: #e2e8f0; margin: 8px 0;"><strong style="color: #00b4d8;">Project Details:</strong> ${message}</p>` : ''}
+            </div>
+            
+            <div style="background: linear-gradient(90deg, #00b4d8 0%, #0077b6 100%); color: white; padding: 25px; border-radius: 8px; margin: 25px 0;">
+              <h3 style="margin: 0 0 15px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">Contact Us</h3>
+              <p style="margin: 8px 0; font-size: 14px;">📞 (443) 477-1124</p>
+              <p style="margin: 8px 0; font-size: 14px;">📧 optimusxcustoms@gmail.com</p>
+              <p style="margin: 8px 0; font-size: 14px;">📍 Cherry Lane, Laurel MD, 20707</p>
+            </div>
+            
+            <p style="color: #94a3b8; font-size: 14px; text-align: center; margin-top: 30px;">
+              Best regards,<br>
+              <strong style="color: #00b4d8;">The Optimus Customs Team</strong>
+            </p>
           </div>
-          
-          <p style="color: #666; font-size: 14px;">
-            Best regards,<br>
-            <strong>The Optimus Customs Team</strong>
-          </p>
         </div>
       `,
     });
