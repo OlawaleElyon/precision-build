@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Phone, Mail, MapPin, Instagram, CheckCircle, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "optimusxcustoms@gmail.com", href: "mailto:optimusxcustoms@gmail.com" },
@@ -46,7 +47,11 @@ const BookingForm = () => {
     setIsSubmitting(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const { data, error } = await supabase.functions.invoke('send-booking-email', {
+        body: formData,
+      });
+
+      if (error) throw error;
       
       setIsSubmitted(true);
       toast({
@@ -62,7 +67,8 @@ const BookingForm = () => {
         preferredDate: "",
         message: "",
       });
-    } catch (error) {
+    } catch (error: any) {
+      console.error("Error sending booking email:", error);
       toast({
         title: "Something went wrong",
         description: "Please try again or contact us directly.",
