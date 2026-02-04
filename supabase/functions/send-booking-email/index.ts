@@ -28,7 +28,7 @@ const sendEmail = async (to: string, subject: string, html: string) => {
     },
     body: JSON.stringify({
       personalizations: [{ to: [{ email: to }] }],
-      from: { email: "optimusxcustoms@gmail.com", name: "Optimus Customs" },
+      from: { email: "bookings@optimuscustomz.com", name: "Optimus Customs" },
       subject: subject,
       content: [{ type: "text/html", value: html }],
     }),
