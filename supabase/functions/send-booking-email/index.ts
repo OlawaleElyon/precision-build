@@ -63,37 +63,43 @@ const handler = async (req: Request): Promise<Response> => {
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #0a1628; padding: 40px 20px;">
           <tr>
             <td align="center">
-              <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background: linear-gradient(180deg, #0f1f35 0%, #162a46 100%); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 180, 216, 0.15);">
+              <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background: linear-gradient(180deg, #0f1f35 0%, #0a1628 100%); border-radius: 20px; overflow: hidden; border: 1px solid rgba(0, 180, 216, 0.15); box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(0, 180, 216, 0.08);">
                 
-                <!-- Header -->
+                <!-- Header with gradient -->
                 <tr>
-                  <td style="background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%); padding: 40px 30px; text-align: center;">
-                    <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">OPTIMUS CUSTOMS</h1>
-                    <p style="margin: 10px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px; letter-spacing: 2px;">NEW BOOKING REQUEST</p>
+                  <td style="background: linear-gradient(135deg, #00b4d8 0%, #0077b6 50%, #005f8d 100%); padding: 50px 40px; text-align: center; position: relative;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 50%);"></div>
+                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 800; letter-spacing: 6px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">OPTIMUS CUSTOMS</h1>
+                    <div style="width: 60px; height: 3px; background: rgba(255,255,255,0.6); margin: 18px auto 0; border-radius: 2px;"></div>
+                    <p style="margin: 18px 0 0 0; color: rgba(255,255,255,0.95); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500;">🔔 New Booking Request</p>
                   </td>
                 </tr>
                 
                 <!-- Content -->
                 <tr>
-                  <td style="padding: 40px 30px;">
+                  <td style="padding: 40px 35px;">
                     
                     <!-- Customer Info Card -->
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: rgba(0, 180, 216, 0.08); border: 1px solid rgba(0, 180, 216, 0.2); border-radius: 12px; margin-bottom: 20px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: linear-gradient(145deg, rgba(15, 31, 53, 0.9) 0%, rgba(10, 22, 40, 0.95) 100%); border: 1px solid rgba(0, 180, 216, 0.2); border-radius: 16px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(0, 180, 216, 0.1);">
                       <tr>
-                        <td style="padding: 25px;">
-                          <h2 style="margin: 0 0 20px 0; color: #00b4d8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(0, 180, 216, 0.2); padding-bottom: 10px;">👤 Customer Information</h2>
+                        <td style="padding: 28px;">
+                          <h2 style="margin: 0 0 20px 0; color: #00b4d8; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; display: flex; align-items: center;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #00b4d8; border-radius: 50%; margin-right: 12px; box-shadow: 0 0 12px #00b4d8;"></span>
+                            Customer Information
+                          </h2>
+                          <div style="width: 100%; height: 1px; background: linear-gradient(90deg, rgba(0, 180, 216, 0.3), transparent); margin-bottom: 20px;"></div>
                           <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                              <td style="padding: 8px 0; color: #64748b; font-size: 13px; width: 100px;">Name</td>
-                              <td style="padding: 8px 0; color: #ffffff; font-size: 15px; font-weight: 600;">${name}</td>
+                              <td style="padding: 12px 0; color: #64748b; font-size: 13px; width: 110px; font-weight: 500;">Name</td>
+                              <td style="padding: 12px 0; color: #f1f5f9; font-size: 15px; font-weight: 600;">${name}</td>
                             </tr>
                             <tr>
-                              <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Email</td>
-                              <td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #00b4d8; font-size: 15px; text-decoration: none;">${email}</a></td>
+                              <td style="padding: 12px 0; color: #64748b; font-size: 13px; font-weight: 500;">Email</td>
+                              <td style="padding: 12px 0;"><a href="mailto:${email}" style="color: #00b4d8; font-size: 15px; text-decoration: none; font-weight: 500;">${email}</a></td>
                             </tr>
                             <tr>
-                              <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Phone</td>
-                              <td style="padding: 8px 0;"><a href="tel:${phone}" style="color: #00b4d8; font-size: 15px; text-decoration: none;">${phone}</a></td>
+                              <td style="padding: 12px 0; color: #64748b; font-size: 13px; font-weight: 500;">Phone</td>
+                              <td style="padding: 12px 0;"><a href="tel:${phone}" style="color: #00b4d8; font-size: 15px; text-decoration: none; font-weight: 500;">${phone}</a></td>
                             </tr>
                           </table>
                         </td>
@@ -101,18 +107,22 @@ const handler = async (req: Request): Promise<Response> => {
                     </table>
                     
                     <!-- Service Details Card -->
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: rgba(0, 180, 216, 0.08); border: 1px solid rgba(0, 180, 216, 0.2); border-radius: 12px; margin-bottom: 20px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: linear-gradient(145deg, rgba(15, 31, 53, 0.9) 0%, rgba(10, 22, 40, 0.95) 100%); border: 1px solid rgba(0, 180, 216, 0.2); border-radius: 16px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(0, 180, 216, 0.1);">
                       <tr>
-                        <td style="padding: 25px;">
-                          <h2 style="margin: 0 0 20px 0; color: #00b4d8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(0, 180, 216, 0.2); padding-bottom: 10px;">🚗 Service Details</h2>
+                        <td style="padding: 28px;">
+                          <h2 style="margin: 0 0 20px 0; color: #00b4d8; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #00b4d8; border-radius: 50%; margin-right: 12px; box-shadow: 0 0 12px #00b4d8;"></span>
+                            Service Details
+                          </h2>
+                          <div style="width: 100%; height: 1px; background: linear-gradient(90deg, rgba(0, 180, 216, 0.3), transparent); margin-bottom: 20px;"></div>
                           <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                              <td style="padding: 8px 0; color: #64748b; font-size: 13px; width: 120px;">Service Type</td>
-                              <td style="padding: 8px 0; color: #ffffff; font-size: 15px; font-weight: 600;">${serviceType}</td>
+                              <td style="padding: 12px 0; color: #64748b; font-size: 13px; width: 130px; font-weight: 500;">Service Type</td>
+                              <td style="padding: 12px 0; color: #f1f5f9; font-size: 15px; font-weight: 600;">${serviceType}</td>
                             </tr>
                             <tr>
-                              <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Preferred Date</td>
-                              <td style="padding: 8px 0; color: #ffffff; font-size: 15px; font-weight: 600;">${preferredDate}</td>
+                              <td style="padding: 12px 0; color: #64748b; font-size: 13px; font-weight: 500;">Preferred Date</td>
+                              <td style="padding: 12px 0; color: #f1f5f9; font-size: 15px; font-weight: 600;">${preferredDate}</td>
                             </tr>
                           </table>
                         </td>
@@ -121,11 +131,15 @@ const handler = async (req: Request): Promise<Response> => {
                     
                     ${message ? `
                     <!-- Project Details Card -->
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: rgba(0, 180, 216, 0.08); border: 1px solid rgba(0, 180, 216, 0.2); border-radius: 12px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: linear-gradient(145deg, rgba(15, 31, 53, 0.9) 0%, rgba(10, 22, 40, 0.95) 100%); border: 1px solid rgba(0, 180, 216, 0.2); border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(0, 180, 216, 0.1);">
                       <tr>
-                        <td style="padding: 25px;">
-                          <h2 style="margin: 0 0 15px 0; color: #00b4d8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(0, 180, 216, 0.2); padding-bottom: 10px;">📝 Project Details</h2>
-                          <p style="margin: 0; color: #e2e8f0; font-size: 15px; line-height: 1.6;">${message}</p>
+                        <td style="padding: 28px;">
+                          <h2 style="margin: 0 0 20px 0; color: #00b4d8; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #00b4d8; border-radius: 50%; margin-right: 12px; box-shadow: 0 0 12px #00b4d8;"></span>
+                            Project Details
+                          </h2>
+                          <div style="width: 100%; height: 1px; background: linear-gradient(90deg, rgba(0, 180, 216, 0.3), transparent); margin-bottom: 20px;"></div>
+                          <p style="margin: 0; color: #e2e8f0; font-size: 15px; line-height: 1.7;">${message}</p>
                         </td>
                       </tr>
                     </table>
@@ -136,8 +150,8 @@ const handler = async (req: Request): Promise<Response> => {
                 
                 <!-- Footer -->
                 <tr>
-                  <td style="background: rgba(0, 0, 0, 0.3); padding: 20px 30px; text-align: center;">
-                    <p style="margin: 0; color: #64748b; font-size: 12px;">Submitted via Optimus Customs Website</p>
+                  <td style="background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%); padding: 25px 35px; text-align: center; border-top: 1px solid rgba(0, 180, 216, 0.1);">
+                    <p style="margin: 0; color: #64748b; font-size: 12px; letter-spacing: 1px;">Submitted via <span style="color: #00b4d8;">Optimus Customs</span> Website</p>
                   </td>
                 </tr>
                 
@@ -161,48 +175,53 @@ const handler = async (req: Request): Promise<Response> => {
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #0a1628; padding: 40px 20px;">
           <tr>
             <td align="center">
-              <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background: linear-gradient(180deg, #0f1f35 0%, #162a46 100%); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 180, 216, 0.15);">
+              <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background: linear-gradient(180deg, #0f1f35 0%, #0a1628 100%); border-radius: 20px; overflow: hidden; border: 1px solid rgba(0, 180, 216, 0.15); box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(0, 180, 216, 0.08);">
                 
-                <!-- Header -->
+                <!-- Header with gradient -->
                 <tr>
-                  <td style="background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%); padding: 40px 30px; text-align: center;">
-                    <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">OPTIMUS CUSTOMS</h1>
-                    <p style="margin: 15px 0 0 0; color: rgba(255,255,255,0.95); font-size: 20px; font-weight: 500;">Thank You, ${name}!</p>
+                  <td style="background: linear-gradient(135deg, #00b4d8 0%, #0077b6 50%, #005f8d 100%); padding: 50px 40px; text-align: center;">
+                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 800; letter-spacing: 6px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">OPTIMUS CUSTOMS</h1>
+                    <div style="width: 60px; height: 3px; background: rgba(255,255,255,0.6); margin: 18px auto 0; border-radius: 2px;"></div>
+                    <p style="margin: 20px 0 0 0; color: #ffffff; font-size: 22px; font-weight: 600;">Thank You, ${name}!</p>
                   </td>
                 </tr>
                 
                 <!-- Confirmation Message -->
                 <tr>
-                  <td style="padding: 40px 30px 20px 30px;">
-                    <p style="margin: 0 0 15px 0; color: #e2e8f0; font-size: 16px; line-height: 1.7; text-align: center;">
+                  <td style="padding: 45px 40px 25px 40px; text-align: center;">
+                    <p style="margin: 0 0 18px 0; color: #e2e8f0; font-size: 16px; line-height: 1.8;">
                       We've received your booking request for <strong style="color: #00b4d8;">${serviceType}</strong> on <strong style="color: #00b4d8;">${preferredDate}</strong>.
                     </p>
-                    <p style="margin: 0; color: #94a3b8; font-size: 15px; line-height: 1.7; text-align: center;">
-                      Our team will review your request and get back to you within <strong style="color: #ffffff;">24 hours</strong> to confirm your appointment.
+                    <p style="margin: 0; color: #94a3b8; font-size: 15px; line-height: 1.7;">
+                      Our team will review your request and get back to you within <span style="color: #ffffff; font-weight: 600; background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(0, 119, 182, 0.2)); padding: 3px 10px; border-radius: 20px;">24 hours</span> to confirm your appointment.
                     </p>
                   </td>
                 </tr>
                 
                 <!-- Request Summary Card -->
                 <tr>
-                  <td style="padding: 10px 30px 30px 30px;">
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: rgba(0, 180, 216, 0.08); border: 1px solid rgba(0, 180, 216, 0.2); border-radius: 12px;">
+                  <td style="padding: 10px 35px 25px 35px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: linear-gradient(145deg, rgba(15, 31, 53, 0.9) 0%, rgba(10, 22, 40, 0.95) 100%); border: 1px solid rgba(0, 180, 216, 0.2); border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(0, 180, 216, 0.1);">
                       <tr>
-                        <td style="padding: 25px;">
-                          <h2 style="margin: 0 0 20px 0; color: #00b4d8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(0, 180, 216, 0.2); padding-bottom: 10px;">📋 Your Request Summary</h2>
+                        <td style="padding: 28px;">
+                          <h2 style="margin: 0 0 20px 0; color: #00b4d8; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #00b4d8; border-radius: 50%; margin-right: 12px; box-shadow: 0 0 12px #00b4d8;"></span>
+                            Your Request Summary
+                          </h2>
+                          <div style="width: 100%; height: 1px; background: linear-gradient(90deg, rgba(0, 180, 216, 0.3), transparent); margin-bottom: 20px;"></div>
                           <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                              <td style="padding: 10px 0; color: #64748b; font-size: 13px; width: 120px;">Service</td>
-                              <td style="padding: 10px 0; color: #ffffff; font-size: 15px; font-weight: 600;">${serviceType}</td>
+                              <td style="padding: 12px 0; color: #64748b; font-size: 13px; width: 130px; font-weight: 500;">Service</td>
+                              <td style="padding: 12px 0; color: #f1f5f9; font-size: 15px; font-weight: 600;">${serviceType}</td>
                             </tr>
                             <tr>
-                              <td style="padding: 10px 0; color: #64748b; font-size: 13px;">Preferred Date</td>
-                              <td style="padding: 10px 0; color: #ffffff; font-size: 15px; font-weight: 600;">${preferredDate}</td>
+                              <td style="padding: 12px 0; color: #64748b; font-size: 13px; font-weight: 500;">Preferred Date</td>
+                              <td style="padding: 12px 0; color: #f1f5f9; font-size: 15px; font-weight: 600;">${preferredDate}</td>
                             </tr>
                             ${message ? `
                             <tr>
-                              <td style="padding: 10px 0; color: #64748b; font-size: 13px; vertical-align: top;">Project Details</td>
-                              <td style="padding: 10px 0; color: #e2e8f0; font-size: 15px; line-height: 1.5;">${message}</td>
+                              <td style="padding: 12px 0; color: #64748b; font-size: 13px; vertical-align: top; font-weight: 500;">Project Details</td>
+                              <td style="padding: 12px 0; color: #e2e8f0; font-size: 15px; line-height: 1.6;">${message}</td>
                             </tr>
                             ` : ''}
                           </table>
@@ -214,25 +233,28 @@ const handler = async (req: Request): Promise<Response> => {
                 
                 <!-- Contact Card -->
                 <tr>
-                  <td style="padding: 0 30px 30px 30px;">
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%); border-radius: 12px;">
+                  <td style="padding: 0 35px 35px 35px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%); border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 180, 216, 0.2);">
                       <tr>
-                        <td style="padding: 25px;">
-                          <h2 style="margin: 0 0 20px 0; color: #ffffff; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">📞 Contact Us</h2>
+                        <td style="padding: 28px;">
+                          <h2 style="margin: 0 0 20px 0; color: #ffffff; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: rgba(255,255,255,0.8); border-radius: 50%; margin-right: 12px;"></span>
+                            Contact Us
+                          </h2>
                           <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                              <td style="padding: 6px 0;">
-                                <span style="color: rgba(255,255,255,0.9); font-size: 15px;">📱 (443) 477-1124</span>
+                              <td style="padding: 8px 0;">
+                                <span style="color: rgba(255,255,255,0.95); font-size: 15px; font-weight: 500;">📱 (443) 477-1124</span>
                               </td>
                             </tr>
                             <tr>
-                              <td style="padding: 6px 0;">
-                                <span style="color: rgba(255,255,255,0.9); font-size: 15px;">✉️ optimusxcustoms@gmail.com</span>
+                              <td style="padding: 8px 0;">
+                                <span style="color: rgba(255,255,255,0.95); font-size: 15px; font-weight: 500;">✉️ optimusxcustoms@gmail.com</span>
                               </td>
                             </tr>
                             <tr>
-                              <td style="padding: 6px 0;">
-                                <span style="color: rgba(255,255,255,0.9); font-size: 15px;">📍 Cherry Lane, Laurel MD, 20707</span>
+                              <td style="padding: 8px 0;">
+                                <span style="color: rgba(255,255,255,0.95); font-size: 15px; font-weight: 500;">📍 Cherry Lane, Laurel MD, 20707</span>
                               </td>
                             </tr>
                           </table>
@@ -244,9 +266,9 @@ const handler = async (req: Request): Promise<Response> => {
                 
                 <!-- Footer -->
                 <tr>
-                  <td style="background: rgba(0, 0, 0, 0.3); padding: 25px 30px; text-align: center;">
-                    <p style="margin: 0 0 5px 0; color: #94a3b8; font-size: 14px;">Best regards,</p>
-                    <p style="margin: 0; color: #00b4d8; font-size: 16px; font-weight: 600;">The Optimus Customs Team</p>
+                  <td style="background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%); padding: 30px 35px; text-align: center; border-top: 1px solid rgba(0, 180, 216, 0.1);">
+                    <p style="margin: 0 0 8px 0; color: #94a3b8; font-size: 14px;">Best regards,</p>
+                    <p style="margin: 0; color: #00b4d8; font-size: 16px; font-weight: 700; letter-spacing: 2px;">THE OPTIMUS CUSTOMS TEAM</p>
                   </td>
                 </tr>
                 
