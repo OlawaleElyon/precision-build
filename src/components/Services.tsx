@@ -94,16 +94,10 @@ const Services = () => {
                   {service.description}
                 </p>
 
-                {/* Duration & Price */}
-                <div className="flex items-center justify-between pt-4 border-t border-border">
-                  <div>
-                    <span className="text-muted-foreground text-xs block">Duration</span>
-                    <span className="text-foreground font-semibold">{service.duration}</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-muted-foreground text-xs block">Starting at</span>
-                    <span className="text-primary font-bold text-xl">{service.price}</span>
-                  </div>
+                {/* Price */}
+                <div className="pt-4 border-t border-border text-right">
+                  <span className="text-muted-foreground text-xs block">Starting at</span>
+                  <span className="text-primary font-bold text-xl">{service.price}</span>
                 </div>
               </div>
             </motion.div>
