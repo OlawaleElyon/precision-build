@@ -50,7 +50,7 @@ const Header = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="tel:+573186355875"
+              href="tel:+443 477 1124"
               className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors duration-300 px-4 py-2 rounded-lg hover:bg-primary/10"
             >
               <Phone className="w-4 h-4" />
