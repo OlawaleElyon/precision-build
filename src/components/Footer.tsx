@@ -109,11 +109,11 @@ const Footer = () => {
                 optimusxcustoms@gmail.com
               </a>
               <a
-                href="tel:+443 477-1124"
+                href="tel: 443 477 1124"
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
               >
                 <Phone className="w-5 h-5 flex-shrink-0" />
-                57 318 6355875
+                 443 477 1124
               </a>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=Cherry+Lane+Laurel+MD+20707"
