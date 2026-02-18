@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "optimusxcustoms@gmail.com", href: "mailto:optimusxcustoms@gmail.com" },
-  { icon: Phone, label: "Phone", value: "57 318 6355875", href: "tel:+57 318 6355875" },
+  { icon: Phone, label: "Phone", value: "(443) 477-1124", href: "tel: +443 477-1124" },
   { icon: Instagram, label: "Instagram", value: "@optimus.customs", href: "https://instagram.com/optimus.customs" },
   { icon: MapPin, label: "Address", value: "Cherry Lane, Laurel MD, 20707", href: "#" },
 ];
