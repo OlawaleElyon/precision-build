@@ -99,7 +99,7 @@ const Header = () => {
                   className="flex items-center gap-2 text-primary py-3 px-4"
                 >
                   <Phone className="w-4 h-4" />
-                  <span className="font-medium">57 318 6355875</span>
+                  <span className="font-medium">443 477 1124</span>
                 </a>
                 <a
                   href="#booking"
